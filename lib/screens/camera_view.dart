@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:kim_app/screens/step1_VideoPage.dart';
 import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/tflite/classifier.dart';
+import 'package:kim_app/tflite/nn_classifier.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../Tools/SlideLeftRoute.dart';
@@ -23,8 +24,77 @@ import 'homescreen.dart';
 import 'package:kim_app/main.dart';
 
 bool button = false;
+List<List> resultList = [];
+
 void countTest(bool isCount){
+  if(button != isCount && isCount == true){
+    resultList.clear();
+  }
   button = isCount;
+}
+Future _fromFutureToString(Future<String> str) {
+  return Future.value(str);
+}
+
+Future<void> processResultList(List<List<dynamic>> resultList) async {
+  late String label_result;
+  late String label_final_result;
+  List<String> label_result_list = [];
+  List<String> label_final_result_list = [];
+  NNClassifier resultClassifier = NNClassifier();
+  await Future.delayed(Duration(seconds: 1)); // 設定打開模型為1秒
+  print(resultList.length);
+  for (var i = 0; i < resultList.length; i++) {
+    List flattenedList = resultList[i].expand((list) => list).toList();
+    List doubleList = flattenedList.map((i) => i.toDouble()).toList();
+    // print(doubleList); // [1, 2, 3, 4, 5, 6, ..., 51]
+
+    Future result = _fromFutureToString(resultClassifier.classify(doubleList));
+    label_result = await result;
+  }
+  for (var i = 0; i < resultList.length; i++) {
+    List flattenedList = resultList[i].expand((list) => list).toList();
+    List doubleList = flattenedList.map((i) => i.toDouble()).toList();
+
+    Future result = _fromFutureToString(resultClassifier.classify(doubleList));
+    label_result = await result;
+
+    label_result_list.add(
+        label_result); // 將 label_result 添加到 label_result_list 中
+  }
+  print(label_result_list);
+  for (int i = 0; i < label_result_list.length; i ++) {
+    if (i + 10 > label_result_list.length) {
+      break;
+    }
+    List<String> slice = label_result_list.sublist(i, i + 10).map((item) => item.toString()).toList();
+    Map<String, int> counts = {};
+    slice.forEach((label) {
+      counts[label] = counts.containsKey(label) ? counts[label]! + 1 : 1;
+    });
+    String mostFrequent="";
+    int maxCount = 0;
+    counts.forEach((label, count) {
+      if (count > maxCount) {
+        mostFrequent = label;
+        maxCount = count;
+      }
+      if(maxCount>8){
+        label_final_result_list.add(label);
+      }
+    });
+    print('第${i}个切片中出现最多的元素是 $mostFrequent，共出現了 $maxCount 次');
+  }
+  if(label_final_result_list.contains('label20')){
+    label_final_result = 'label20';
+  }else if(label_final_result_list.contains('label15')){
+    label_final_result = 'label15';
+  }else if(label_final_result_list.contains('label5')){
+    label_final_result = 'label5';
+  }else{
+    label_final_result = 'label0';
+  }
+  print(label_final_result); //輸出最終評級
 }
 
 class CameraView extends StatefulWidget {
@@ -248,6 +318,7 @@ class RenderLandmarks extends CustomPainter {
     [12, 14], // right_hip to right_knee
     [14, 16] // right_knee to right_ankle
   ];
+
   RenderLandmarks(List<dynamic> inferences, width, height) {
     List result = [];
     var x, y, c;
@@ -257,11 +328,13 @@ class RenderLandmarks extends CustomPainter {
       c = (inferences[2 + i]);
       result.add([x, y, c]);
     }
-    if(button){
-      print("in");
-    }
-    inferenceList = result;
 
+    if(button){
+      resultList.add(result);
+      // print(result);
+    }
+
+    inferenceList = result;
   }
   @override
   void paint(Canvas canvas, Size size) {

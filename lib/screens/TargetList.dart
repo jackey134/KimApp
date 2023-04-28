@@ -105,14 +105,14 @@ class _TartgetListState extends State<TartgetList> {
                     ),
                     child: const Stack(
                       children: [
-                        // Positioned(
-                        //   top: 10,
-                        //   left: 15,
-                        //   child: Text(
-                        //     "完成(0/1)",
-                        //     style: TextStyle(fontSize: 20, color: Colors.white),
-                        //   ),
-                        // ),
+                        Positioned(
+                          top: 10,
+                          left: 15,
+                          child: Text(
+                            "完成(0/1)",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
                         Positioned(
                           bottom: 10,
                           left: 15,
@@ -166,14 +166,14 @@ class _TartgetListState extends State<TartgetList> {
                     ),
                     child: const Stack(
                       children: [
-                        // Positioned(
-                        //   top: 10,
-                        //   left: 15,
-                        //   child: Text(
-                        //     "完成(0/1)",
-                        //     style: TextStyle(fontSize: 20, color: Colors.white),
-                        //   ),
-                        // ),
+                        Positioned(
+                          top: 10,
+                          left: 15,
+                          child: Text(
+                            "完成(0/1)",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
                         Positioned(
                           bottom: 10,
                           left: 15,
@@ -230,14 +230,14 @@ class _TartgetListState extends State<TartgetList> {
                     ),
                     child: const Stack(
                       children: [
-                        // Positioned(
-                        //   top: 10,
-                        //   left: 15,
-                        //   child: Text(
-                        //     "完成(0/1)",
-                        //     style: TextStyle(fontSize: 20, color: Colors.white),
-                        //   ),
-                        // ),
+                        Positioned(
+                          top: 10,
+                          left: 15,
+                          child: Text(
+                            "完成(0/1)",
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ),
+                        ),
                         Positioned(
                           bottom: 10,
                           left: 15,
@@ -289,7 +289,7 @@ class _TartgetListState extends State<TartgetList> {
                   ),
                   child: Center(
                     child: Text(
-                      "進行上傳檢測",
+                      "KIM風險等級評估",
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
