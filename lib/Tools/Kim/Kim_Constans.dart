@@ -1,4 +1,6 @@
 //風險值
+import '../../screens/camera_view.dart';
+
 class RiskLevel {
   static riskLevelCount() {
     return TimeLevel.timeLevel *
@@ -8,94 +10,96 @@ class RiskLevel {
   }
 
   static getScore() {
-    RiskLevelScore riskLevelScore = RiskLevelScore();
-    return riskLevelScore.scoreNumber();
+    return RiskLevelScore.scoreNumber();
   }
 }
 
 class RiskLevelScore{
-  static int score = 0;
-  scoreNumber(){
-    if(RiskLevel.riskLevelCount() < 10){
+  static int? score;
+  static scoreNumber(){
+    int total = RiskLevel.riskLevelCount();
+    if(total < 10){
       score = 1;
-    }else if(RiskLevel.riskLevelCount() >10 && RiskLevel.riskLevelCount() < 25){
+    }else if(total >10 && total < 25){
       score = 2;
-    }else if(RiskLevel.riskLevelCount() >25 && RiskLevel.riskLevelCount() < 50){
+    }else if(total >25 && total < 50){
       score = 4;
-    }else if(RiskLevel.riskLevelCount() >=50){
+    }else if(total >=50){
       score = 8;
     }
-    print("${RiskLevel.riskLevelCount()} = ${TimeLevel.timeLevel = 4} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
+    print("${total} = ${TimeLevel.timeLevel} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
 
     return score;
   }
-
 }
 
 //時間評級
 class TimeLevel {
   // ignore: non_constant_identifier_names
-  static int timeLevel =
-  0; //使用static的意義在進入記憶體的時候就給定值，因為會使用到多次參數所以寫入static以降低記憶體需求
+  static int timeLevel = 0; //使用static的意義在進入記憶體的時候就給定值，因為會使用到多次參數所以寫入static以降低記憶體需求
   // 資料來源:https://ithelp.ithome.com.tw/articles/10230484
   // ignore: non_constant_identifier_names
-  static int liftingTotal = 0;
+  static int liftingScore = 0;
 
   // ignore: non_constant_identifier_names
-  static int holdingTimeTotal = 0;
+  static int holdingTimeScore = 0;
 
   // ignore: non_constant_identifier_names
-  static int carryingDistanceTotal = 0;
+  static int carryingDistanceScore = 0;
 
-  lifting() {
+  static lifting() {
     //單位為次數
-    if (liftingTotal >= 0 && liftingTotal < 10) {
+    if (liftingScore == 1) {
       timeLevel = 1;
-    } else if (liftingTotal >= 10 && liftingTotal < 40) {
+    } else if (liftingScore == 2) {
       timeLevel = 2;
-    } else if (liftingTotal >= 40 && liftingTotal < 200) {
+    } else if (liftingScore == 4) {
       timeLevel = 4;
-    } else if (liftingTotal >= 200 && liftingTotal < 500) {
+    } else if (liftingScore == 6) {
       timeLevel = 6;
-    } else if (liftingTotal >= 500 && liftingTotal < 1000) {
+    } else if (liftingScore == 8) {
       timeLevel = 8;
-    } else if (liftingTotal >= 1000) {
+    } else if (liftingScore == 10) {
       timeLevel = 10;
     }
     return timeLevel;
   }
 
-  holding() {
-    //時間單位為分鐘(min)
-    if (holdingTimeTotal >= 0 && holdingTimeTotal < 5) {
+  //holdingTimeScore
+
+  static holding() {
+    //單位為次數
+    if (holdingTimeScore == 1) {
       timeLevel = 1;
-    } else if (holdingTimeTotal >= 5 && holdingTimeTotal < 15) {
+    } else if (holdingTimeScore == 2) {
       timeLevel = 2;
-    } else if (holdingTimeTotal >= 15 && holdingTimeTotal < 60) {
+    } else if (holdingTimeScore == 4) {
       timeLevel = 4;
-    } else if (holdingTimeTotal >= 60 && holdingTimeTotal < 120) {
+    } else if (holdingTimeScore == 6) {
       timeLevel = 6;
-    } else if (holdingTimeTotal >= 120 && holdingTimeTotal < 240) {
+    } else if (holdingTimeScore == 8) {
       timeLevel = 8;
-    } else if (holdingTimeTotal >= 240) {
+    } else if (holdingTimeScore == 10) {
       timeLevel = 10;
     }
     return timeLevel;
   }
 
-  carrying() {
-    //單位為公里(KM)
-    if (carryingDistanceTotal >= 0 && carryingDistanceTotal < 5) {
+  //carryingDistanceScore
+
+  static carrying() {
+    //單位為次數
+    if (carryingDistanceScore == 1) {
       timeLevel = 1;
-    } else if (carryingDistanceTotal >= 5 && carryingDistanceTotal < 15) {
+    } else if (carryingDistanceScore == 2) {
       timeLevel = 2;
-    } else if (carryingDistanceTotal >= 15 && carryingDistanceTotal < 60) {
+    } else if (carryingDistanceScore == 4) {
       timeLevel = 4;
-    } else if (carryingDistanceTotal >= 60 && carryingDistanceTotal < 120) {
+    } else if (carryingDistanceScore == 6) {
       timeLevel = 6;
-    } else if (carryingDistanceTotal >= 120 && carryingDistanceTotal < 240) {
+    } else if (carryingDistanceScore == 8) {
       timeLevel = 8;
-    } else if (carryingDistanceTotal >= 240) {
+    } else if (carryingDistanceScore == 10) {
       timeLevel = 10;
     }
     return timeLevel;
@@ -168,22 +172,24 @@ class WorkingCondition {
 //姿勢評級
 class PoseLevel {
   // ignore: non_constant_identifier_names
-  static int poseLevel = 0;
+  static String poseResult = getFinalResult();
+  static int poseLevel = getPoseLevel();
 
-  level_1() {
-    poseLevel = 1;
-  }
-
-  level_2() {
-    poseLevel = 2;
-  }
-
-  level_4() {
-    poseLevel = 4;
-  }
-
-  level_8() {
-    poseLevel = 8;
+  static getPoseLevel(){
+    int poseScore = 0;
+    if(poseResult == "label0"){
+      poseScore = 1;
+    }
+    if(poseResult == "label5"){
+      poseScore = 2;
+    }
+    if(poseResult == "label10"){
+      poseScore = 4;
+    }
+    if(poseResult == "label20"){
+      poseScore = 8;
+    }
+    return poseScore;
   }
 }
 

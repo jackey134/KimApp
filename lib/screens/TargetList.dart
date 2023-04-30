@@ -5,10 +5,10 @@ import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step2_2_GirlChoiceButton_view.dart';
 import 'package:kim_app/screens/step2_2_MenChoiceButton_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
+import '../Tools/Kim/Kim_Constans.dart';
 import '../Tools/SlideLeftRoute.dart';
 import '../Tools/camera_tools/camera_screen.dart';
 import '../Tools/constants.dart';
-import '../Tools/stepbutton.dart';
 import '../Tools/Boxdecoration.dart';
 import '../Tools/widgetfunction.dart';
 
@@ -210,8 +210,10 @@ class _TartgetListState extends State<TartgetList> {
                   widget.isMan
                       ? Navigator.push(context,
                           SlideRightRoute(widget: Step2_menchoicebutton_view()))
-                      : Navigator.push(context,
-                          SlideRightRoute(widget: Step2_girlchoicebutton_view()));
+                      : Navigator.push(
+                          context,
+                          SlideRightRoute(
+                              widget: Step2_girlchoicebutton_view()));
                 },
                 child: Padding(
                   padding: EdgeInsets.only(left: 12, top: 30, right: 12),
@@ -275,10 +277,14 @@ class _TartgetListState extends State<TartgetList> {
               //進行檢測
               InkWell(
                 onTap: () {
-                  setState(() {
-                    Navigator.push(
-                        context, SlideRightRoute(widget: Result_view()));
-                  });
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(
+                      widget: Result_view(
+                        riskScore: RiskLevel.getScore(),
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
                   width: constraints.maxWidth * 0.8,

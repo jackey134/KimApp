@@ -14,15 +14,20 @@ import '../Tools/Kim/Kim_Constans.dart';
 import 'homescreen.dart';
 
 class Result_view extends StatefulWidget {
-  const Result_view({Key? key}) : super(key: key);
+  final int riskScore;
+  const Result_view({Key? key, required this.riskScore}) : super(key: key);
 
   @override
   State<Result_view> createState() => _Result_viewState();
 }
 
+
 class _Result_viewState extends State<Result_view> {
+
+
   @override
   Widget build(BuildContext context) {
+    print("widget.riskScore: ${widget.riskScore}");
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorPaleGray,
@@ -58,13 +63,13 @@ class _Result_viewState extends State<Result_view> {
                               shape: BoxShape.circle,
                               border: Border.all(
                                 width: 15,
-                                color: RiskLevel.getScore() == 1
+                                color: widget.riskScore == 1
                                     ? Colors.green
-                                    : RiskLevel.getScore() == 2
+                                    : widget.riskScore == 2
                                         ? Colors.amberAccent
-                                        : RiskLevel.getScore() == 4
+                                        : widget.riskScore == 4
                                             ? Colors.orange
-                                            : RiskLevel.getScore() == 8
+                                            : widget.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -77,16 +82,16 @@ class _Result_viewState extends State<Result_view> {
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.02),
                             child: Text(
-                              "${RiskLevel.getScore()}",
+                              "${widget.riskScore}",
                               style: TextStyle(
                                 fontSize: constraints.maxHeight * 0.08,
-                                color: RiskLevel.getScore() == 1
+                                color: widget.riskScore == 1
                                     ? Colors.green
-                                    : RiskLevel.getScore() == 2
+                                    : widget.riskScore == 2
                                         ? Colors.amberAccent
-                                        : RiskLevel.getScore() == 4
+                                        : widget.riskScore == 4
                                             ? Colors.orange
-                                            : RiskLevel.getScore() == 8
+                                            : widget.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -99,33 +104,33 @@ class _Result_viewState extends State<Result_view> {
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.04),
                             child: Text(
-                              RiskLevel.getScore() == 1
+                              widget.riskScore == 1
                                   ? "低風險"
-                                  : RiskLevel.getScore() == 2
+                                  : widget.riskScore == 2
                                       ? "中等風險"
-                                      : RiskLevel.getScore() == 4
+                                      : widget.riskScore == 4
                                           ? "中高風險"
-                                          : RiskLevel.getScore() == 8
+                                          : widget.riskScore == 8
                                               ? "高風險"
                                               : "錯誤",
                               //textAlign: TextAlign.center, //constraints.maxHeight * 0.053
                               style: TextStyle(
-                                fontSize: RiskLevel.getScore() == 1
+                                fontSize: widget.riskScore == 1
                                     ? constraints.maxHeight * 0.053
-                                    : RiskLevel.getScore() == 2
+                                    : widget.riskScore == 2
                                         ? constraints.maxHeight * 0.043
-                                        : RiskLevel.getScore() == 4
+                                        : widget.riskScore == 4
                                             ? constraints.maxHeight * 0.043
-                                            : RiskLevel.getScore() == 8
+                                            : widget.riskScore == 8
                                                 ? constraints.maxHeight * 0.053
                                                 : 0,
-                                color: RiskLevel.getScore() == 1
+                                color: widget.riskScore == 1
                                     ? Colors.green
-                                    : RiskLevel.getScore() == 2
+                                    : widget.riskScore == 2
                                         ? Colors.amberAccent
-                                        : RiskLevel.getScore() == 4
+                                        : widget.riskScore == 4
                                             ? Colors.orange
-                                            : RiskLevel.getScore() == 8
+                                            : widget.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -226,36 +231,8 @@ class _Result_viewState extends State<Result_view> {
                     child: Padding(
                       padding: EdgeInsets.only(right: 10, left: 10),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Stack(
-                            children: [
-                              Container(
-                                width: 95,
-                                height: 95,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(1000),
-                                  color: COLOR_GRAY,
-                                ),
-                              ),
-                              Positioned(
-                                left: 14,
-                                top: 4,
-                                child: Icon(
-                                  Icons.videocam,
-                                  size: 65,
-                                ),
-                              ),
-                              Positioned(
-                                left: 14,
-                                top: 55,
-                                child: Text(
-                                  "下載影片",
-                                  style: TextStyle(fontSize: 17),
-                                ),
-                              ),
-                            ],
-                          ),
                           InkWell(
                             onTap: () async {
                               var status = await Permission.storage.request();

@@ -16,6 +16,7 @@ import '../Tools/SlideRightRoute.dart';
 import '../Tools/constants.dart';
 
 import 'package:kim_app/utils/isolate_utiles.dart';
+import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
 
 import '../tflite/classifier.dart';
 import '../tflite/recognition.dart';
@@ -25,6 +26,7 @@ import 'package:kim_app/main.dart';
 
 bool button = false;
 List<List> resultList = [];
+late String label_final_result;
 
 void countTest(bool isCount){
   if(button != isCount && isCount == true){
@@ -36,11 +38,16 @@ Future _fromFutureToString(Future<String> str) {
   return Future.value(str);
 }
 
+String getFinalResult(){
+  return label_final_result;
+}
+
 Future<void> processResultList(List<List<dynamic>> resultList) async {
   late String label_result;
-  late String label_final_result;
+
   List<String> label_result_list = [];
   List<String> label_final_result_list = [];
+
   NNClassifier resultClassifier = NNClassifier();
   await Future.delayed(Duration(seconds: 1)); // 設定打開模型為1秒
   print(resultList.length);
@@ -79,7 +86,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
         mostFrequent = label;
         maxCount = count;
       }
-      if(maxCount>8){
+      if(maxCount>=8){
         label_final_result_list.add(label);
       }
     });
@@ -187,7 +194,7 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     // cameras[0] for rear-camera
 
     final CameraController cameraController =
-        CameraController(cameras[0], ResolutionPreset.veryHigh , enableAudio: false);
+    CameraController(cameras[0], ResolutionPreset.veryHigh , enableAudio: false);
 
     cameraController.initialize().then((_) async {
       if (!mounted) {
@@ -246,11 +253,14 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
     var isolateData = IsolateData(imageStream, classifier.interpreter.address);
     List<dynamic> inferenceResults = await inference(isolateData);
 
-    setState(() {
-      inferences = inferenceResults;
-      predicting = false;
-      initialized = true;
-    });
+    if(mounted){
+      setState(() {
+        inferences = inferenceResults;
+        predicting = false;
+        initialized = true;
+      });
+    }
+
   }
 
   Future<List<dynamic>> inference(IsolateData isolateData) async {

@@ -37,8 +37,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 1;
-                LoadLevel.manLoad = 1;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 1;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(
@@ -70,8 +70,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 2;
-                LoadLevel.manLoad = 2;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 2;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(
@@ -103,8 +103,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 3;
-                LoadLevel.manLoad = 3;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 4;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(
@@ -136,8 +136,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 4;
-                LoadLevel.manLoad = 4;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 6;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(
@@ -169,8 +169,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 5;
-                LoadLevel.manLoad = 5;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 8;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(
@@ -202,8 +202,8 @@ class _Mybutton4 extends State<Mybutton4> {
             onTap: () {
               setState(() {
                 _selection5 = 6;
-                LoadLevel.manLoad = 6;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.carryingDistanceScore = 10;
+                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
               });
             },
             child: Stack(

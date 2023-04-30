@@ -45,7 +45,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection1_Girl = 1;
                 LoadLevel.manLoad = 1;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
               });
             },
             child: Stack(
@@ -78,7 +78,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection1_Girl = 2;
                 LoadLevel.manLoad = 2;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
               });
             },
             child: Stack(
@@ -111,7 +111,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection1_Girl = 3;
                 LoadLevel.manLoad = 3;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
               });
             },
             child: Stack(
@@ -144,7 +144,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection1_Girl = 4;
                 LoadLevel.manLoad = 4;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
               });
             },
             child: Stack(
@@ -177,7 +177,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection1_Girl = 5;
                 LoadLevel.manLoad = 5;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
               });
             },
             child: Stack(
@@ -204,6 +204,14 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 ),
               ],
             ),
+          ),
+          Container(
+              height: 35, // 高度
+              child:Divider(
+                thickness: 1, // 線的粗細
+                height: 10, // 線的高度
+                color: Colors.black, // 線的顏色
+              )
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

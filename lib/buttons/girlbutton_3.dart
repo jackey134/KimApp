@@ -37,8 +37,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 1;
-                LoadLevel.manLoad = 1;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 1;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(
@@ -70,8 +70,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 2;
-                LoadLevel.manLoad = 2;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 2;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(
@@ -103,8 +103,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 3;
-                LoadLevel.manLoad = 3;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 4;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(
@@ -136,8 +136,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 4;
-                LoadLevel.manLoad = 4;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 6;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(
@@ -169,8 +169,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 5;
-                LoadLevel.manLoad = 5;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 8;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(
@@ -202,8 +202,8 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
             onTap: () {
               setState(() {
                 _selection4_Girl = 6;
-                LoadLevel.manLoad = 6;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.holdingTimeScore = 10;
+                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
               });
             },
             child: Stack(

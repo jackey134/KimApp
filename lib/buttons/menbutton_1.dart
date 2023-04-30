@@ -13,6 +13,8 @@ class Mybutton extends StatefulWidget {
 class _Mybutton extends State<Mybutton> {
   int _selection1 = 0;
   int _selection2 = 0;
+  int _selectedButtonValue = 0;
+  String _selectedValue="0" as String;
 
   selectTime1(int? timeSelected) {
     setState(() {
@@ -25,6 +27,7 @@ class _Mybutton extends State<Mybutton> {
       _selection2 = timeSelected!;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -205,6 +208,14 @@ class _Mybutton extends State<Mybutton> {
               ],
             ),
           ),
+          Container(
+              height: 35, // 高度
+              child:Divider(
+                thickness: 1, // 線的粗細
+                height: 10, // 線的高度
+                color: Colors.black, // 線的顏色
+              )
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
@@ -218,6 +229,7 @@ class _Mybutton extends State<Mybutton> {
             onTap: () {
               setState(() {
                 _selection2 = 1;
+                //WorkingCondition.levelGood();
                 print("當前工作狀況評級為: ${WorkingCondition.levelGood()}");
               });
             },
@@ -250,6 +262,7 @@ class _Mybutton extends State<Mybutton> {
             onTap: () {
               setState(() {
                 _selection2 = 2;
+                //WorkingCondition.levelNormal();
                 print("當前工作狀況評級為: ${WorkingCondition.levelNormal()}");
               });
             },
@@ -282,6 +295,7 @@ class _Mybutton extends State<Mybutton> {
             onTap: () {
               setState(() {
                 _selection2 = 3;
+                //WorkingCondition.levelBad();
                 print("當前工作狀況評級為: ${WorkingCondition.levelBad()}");
               });
             },
@@ -310,6 +324,49 @@ class _Mybutton extends State<Mybutton> {
               ],
             ),
           ),
+          // Row(
+          //   children: [
+          //     Expanded(
+          //         child:RadioListTile(
+          //           contentPadding: EdgeInsets.all(0.0),
+          //          title: Text("抬舉與置放作業",style: TextStyle(fontSize: 12),),
+          //         value: 1,
+          //          groupValue: _selectedButtonValue,
+          //          onChanged: (value){
+          //            setState(() {
+          //              _selectedButtonValue=value!;
+          //            });
+          //          }
+          //         ),
+          //     ),
+          //     Expanded(
+          //       child:RadioListTile(
+          //           contentPadding: EdgeInsets.all(0.0),
+          //           title: Text("握持時間",style: TextStyle(fontSize: 12),),
+          //           value: 2,
+          //           groupValue: _selectedButtonValue,
+          //           onChanged: (value){
+          //             setState(() {
+          //               _selectedButtonValue=value!;
+          //             });
+          //           }
+          //       ),
+          //     ),
+          //     Expanded(
+          //       child:RadioListTile(
+          //           contentPadding: EdgeInsets.all(0.0),
+          //           title: Text("運送作業",style: TextStyle(fontSize: 12),),
+          //           value: 3,
+          //           groupValue: _selectedButtonValue,
+          //           onChanged: (value){
+          //             setState(() {
+          //               _selectedButtonValue=value!;
+          //             });
+          //           }
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );

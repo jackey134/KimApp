@@ -34,6 +34,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
   /// Results to draw bounding boxes
   late List<Recognition> results;
 
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -164,17 +165,17 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               child: Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
-                  onTap: () {
-                    setState(() {
-                      Navigator.pop(
-                        context,
-                        SlideRightRoute(
-                          widget: TartgetList(
-                            isMan: false,
-                          ),
+                  onTap: () async{
+                    Navigator.pop(
+                      context,
+                      SlideRightRoute(
+                        widget: TartgetList(
+                          isMan: false,
                         ),
-                      );
-                    });
+                      ),
+                    );
+                    await Future.delayed(Duration(seconds: 1)); // 假設計算需要 1 秒鐘
+                    processResultList(resultList);
                   },
                   child: Container(
                     alignment: Alignment.topRight,

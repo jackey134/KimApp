@@ -33,12 +33,13 @@ class _Step2_girlchoicebutton_viewState
       _selection1 = timeSelected!;
     });
   }
+
   selectTime2(int? timeSelected) {
     setState(() {
       _selection2 = timeSelected!;
     });
   }
-
+  int _selectedButtonValue = 0;
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -114,19 +115,107 @@ class _Step2_girlchoicebutton_viewState
                         children: <Widget>[
                           Column(
                             children: <Widget>[
-                              Container(
-                                  height: 450,
-                                  child:ListView(
-                                    scrollDirection: Axis.vertical,
-                                    // key: PageStorageKey(_titles[index]),
-                                    children: [
-                                      Mybutton_Girl(),
-                                      Mybutton2_Girl(),
-                                      Mybutton3_Girl(),
-                                      Mybutton4_Girl()
-                                    ],
-                                  )
-                              )
+                              Scrollbar(
+                                  child: Container(
+                                      height: 450,
+                                      child: ListView(
+                                        scrollDirection: Axis.vertical,
+                                        children: [
+                                          Mybutton_Girl(),
+                                          Container(
+                                              height: 35, // 高度
+                                              child: Divider(
+                                                thickness: 1, // 線的粗細
+                                                height: 10, // 線的高度
+                                                color: Colors.black, // 線的顏色
+                                              )),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                            children: const [
+                                              Text(
+                                                "當前工作時長(三選一)",
+                                                style: TextStyle(fontSize: 20),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: RadioListTile(
+                                                    contentPadding:
+                                                    EdgeInsets.all(0.0),
+                                                    title: Text(
+                                                      "(<5s)",
+                                                      style:
+                                                      TextStyle(fontSize: 15),
+                                                    ),
+                                                    value: 0,
+                                                    groupValue:
+                                                    _selectedButtonValue,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _selectedButtonValue =
+                                                        value!;
+                                                      });
+                                                    }),
+                                              ),
+                                              Expanded(
+                                                child: RadioListTile(
+                                                    contentPadding:
+                                                    EdgeInsets.all(0.0),
+                                                    title: Text(
+                                                      "(>5s)",
+                                                      style:
+                                                      TextStyle(fontSize: 15),
+                                                    ),
+                                                    value: 1,
+                                                    groupValue:
+                                                    _selectedButtonValue,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _selectedButtonValue =
+                                                        value!;
+                                                      });
+                                                    }),
+                                              ),
+                                              Expanded(
+                                                child: RadioListTile(
+                                                    contentPadding:
+                                                    EdgeInsets.all(0.0),
+                                                    title: Text(
+                                                      ">5m",
+                                                      style:
+                                                      TextStyle(fontSize: 15),
+                                                    ),
+                                                    value: 2,
+                                                    groupValue:
+                                                    _selectedButtonValue,
+                                                    onChanged: (value) {
+                                                      setState(() {
+                                                        _selectedButtonValue =
+                                                        value!;
+                                                      });
+                                                    }),
+                                              ),
+                                            ],
+                                          ),
+                                          Container(
+                                              height: 35, // 高度
+                                              child: Divider(
+                                                thickness: 1, // 線的粗細
+                                                height: 10, // 線的高度
+                                                color: Colors.black, // 線的顏色
+                                              )),
+                                          IndexedStack(
+                                              index: _selectedButtonValue,
+                                              children: [
+                                                Mybutton2_Girl(),
+                                                Mybutton3_Girl(),
+                                                Mybutton4_Girl()
+                                              ]),
+                                        ],
+                                      )))
                             ],
                           ),
                         ],

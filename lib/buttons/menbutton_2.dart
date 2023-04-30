@@ -28,7 +28,7 @@ class _Mybutton2
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               Text(
-                "一天作業次數",
+                "抬舉或置放作業",
                 style: TextStyle(fontSize: 20),
               ),
             ],
@@ -37,8 +37,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 1;
-                LoadLevel.manLoad = 1;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 1;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(
@@ -70,8 +70,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 2;
-                LoadLevel.manLoad = 2;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 2;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(
@@ -103,8 +103,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 3;
-                LoadLevel.manLoad = 3;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 4;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(
@@ -136,8 +136,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 4;
-                LoadLevel.manLoad = 4;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 6;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(
@@ -169,8 +169,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 5;
-                LoadLevel.manLoad = 5;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 8;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(
@@ -202,8 +202,8 @@ class _Mybutton2
             onTap: () {
               setState(() {
                 _selection3 = 6;
-                LoadLevel.manLoad = 6;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                TimeLevel.liftingScore = 10;
+                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
               });
             },
             child: Stack(

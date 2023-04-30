@@ -5,7 +5,6 @@ import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
 import '../Tools/camera_tools/camera_screen.dart';
 import '../Tools/constants.dart';
-import '../Tools/stepbutton.dart';
 import '../Tools/Boxdecoration.dart';
 import '../Tools/widgetfunction.dart';
 import 'TargetList.dart';
