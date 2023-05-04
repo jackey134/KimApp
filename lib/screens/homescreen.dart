@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kim_app/Tools/Data/TargetListData.dart';
 import 'package:kim_app/Tools/SlideRightRoute.dart';
-import 'package:kim_app/screens/step1_VideoPage.dart';
-import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
-import 'package:kim_app/screens/step3_result_view.dart';
-import '../Tools/camera_tools/camera_screen.dart';
+import 'package:provider/provider.dart';
 import '../Tools/constants.dart';
-import '../Tools/Boxdecoration.dart';
-import '../Tools/widgetfunction.dart';
+import '../Tools/folders/create_folder.dart';
 import 'TargetList.dart';
 
 class Homescreen extends StatefulWidget {
@@ -19,12 +16,23 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
+
+
   @override
   Widget build(BuildContext context) {
+
+
+    requestPermission();
+    var targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
     //final height = size.height;
+
+
+
+
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorPaleGray,
@@ -93,16 +101,18 @@ class _HomescreenState extends State<Homescreen> {
               ),
               InkWell(
                 onTap: () {
-                  setState(() {
-                    Navigator.push(
-                      context,
-                      SlideRightRoute(
-                        widget: TartgetList(
-                          isMan: false,
-                        ),
-                      ),
-                    );
-                  });
+
+                  print('isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
+                  print('isMan: ${targetListData.isMan}');
+                  print('isCameraCompleted: ${targetListData.isCameraCompleted}');
+                  print('isGenderCompleted: ${targetListData.isGenderCompleted}');
+
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(
+                      widget: TargetList(),
+                    ),
+                  );
                 },
                 child: Container(
                   width: constraints.maxWidth * 0.8,

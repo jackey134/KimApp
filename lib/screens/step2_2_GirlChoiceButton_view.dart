@@ -8,6 +8,8 @@ import 'package:kim_app/buttons/girlbutton_4.dart';
 import 'package:kim_app/screens/homescreen.dart';
 import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
+import 'package:provider/provider.dart';
+import '../Tools/Data/TargetListData.dart';
 import '../Tools/Kim/Kim_Constans.dart';
 
 import '../Tools/SlideRightRoute.dart';
@@ -42,6 +44,7 @@ class _Step2_girlchoicebutton_viewState
   int _selectedButtonValue = 0;
   @override
   Widget build(BuildContext context) {
+    var targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     return SafeArea(
         child: Scaffold(
@@ -234,16 +237,15 @@ class _Step2_girlchoicebutton_viewState
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () {
-                    setState(() {
-                      Navigator.pop(
-                        context,
-                        SlideRightRoute(
-                          widget: TartgetList(
-                            isMan: false,
-                          ),
+                    targetListData.isChoiceButtonCompleted = true;
+                    print('isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
+                    Navigator.pop(
+                      context,
+                      SlideRightRoute(
+                        widget: TargetList(
                         ),
-                      );
-                    });
+                      ),
+                    );
                   },
                   child: Container(
                     alignment: Alignment.topRight,

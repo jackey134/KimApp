@@ -5,29 +5,37 @@ import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step2_2_GirlChoiceButton_view.dart';
 import 'package:kim_app/screens/step2_2_MenChoiceButton_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
+import 'package:provider/provider.dart';
+import '../Tools/Data/TargetListData.dart';
 import '../Tools/Kim/Kim_Constans.dart';
 import '../Tools/SlideLeftRoute.dart';
-import '../Tools/camera_tools/camera_screen.dart';
 import '../Tools/constants.dart';
 import '../Tools/Boxdecoration.dart';
 import '../Tools/widgetfunction.dart';
+import 'homescreen.dart';
 
-class TartgetList extends StatefulWidget {
-  final bool isMan;
-
-  const TartgetList({Key? key, required this.isMan}) : super(key: key);
+class TargetList extends StatefulWidget {
+  const TargetList({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<TartgetList> createState() => _TartgetListState();
+  State<TargetList> createState() => _TartgetListState();
 }
 
-class _TartgetListState extends State<TartgetList> {
+class _TartgetListState extends State<TargetList> {
   @override
   Widget build(BuildContext context) {
+    var targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
     //final height = size.height;
+
+
+
+
+
 
     return SafeArea(
       child: Scaffold(
@@ -42,8 +50,7 @@ class _TartgetListState extends State<TartgetList> {
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    Navigator.pop(context,
-                        SlideLeftRoute(widget: Step2_choicegender_view()));
+                    Navigator.popUntil(context, (route) => route.isFirst);
                   },
                   child: Container(
                     padding: EdgeInsets.only(left: 12, top: 8),
@@ -84,7 +91,10 @@ class _TartgetListState extends State<TartgetList> {
               ),
               //拍攝影片
               InkWell(
-                onTap: () {
+                onTap: () async {
+
+
+
                   Navigator.push(
                       context, SlideRightRoute(widget: step1_VideoPage()));
                 },
@@ -103,13 +113,13 @@ class _TartgetListState extends State<TartgetList> {
                         ),
                       ],
                     ),
-                    child: const Stack(
+                    child: Stack(
                       children: [
                         Positioned(
                           top: 10,
                           left: 15,
                           child: Text(
-                            "完成(0/1)",
+                            "完成(${targetListData.isCameraCompleted ? "1" : "0"}/1)",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -164,13 +174,13 @@ class _TartgetListState extends State<TartgetList> {
                         ),
                       ],
                     ),
-                    child: const Stack(
+                    child:  Stack(
                       children: [
                         Positioned(
                           top: 10,
                           left: 15,
                           child: Text(
-                            "完成(0/1)",
+                            "完成(${targetListData.isGenderCompleted? "1" : "0"}/1)",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -207,7 +217,7 @@ class _TartgetListState extends State<TartgetList> {
               //點選資料
               InkWell(
                 onTap: () {
-                  widget.isMan
+                  targetListData.isMan
                       ? Navigator.push(context,
                           SlideRightRoute(widget: Step2_menchoicebutton_view()))
                       : Navigator.push(
@@ -230,13 +240,13 @@ class _TartgetListState extends State<TartgetList> {
                         ),
                       ],
                     ),
-                    child: const Stack(
+                    child:  Stack(
                       children: [
                         Positioned(
                           top: 10,
                           left: 15,
                           child: Text(
-                            "完成(0/1)",
+                            "完成(${targetListData.isChoiceButtonCompleted? "1" : "0"}/1)",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -275,7 +285,11 @@ class _TartgetListState extends State<TartgetList> {
                 height: constraints.maxHeight * 0.1,
               ),
               //進行檢測
-              InkWell(
+              Visibility(
+                visible: targetListData.isChoiceButtonCompleted &&
+                    targetListData.isCameraCompleted &&
+                    targetListData.isGenderCompleted,
+                child: InkWell(
                 onTap: () {
                   Navigator.push(
                     context,
@@ -300,7 +314,8 @@ class _TartgetListState extends State<TartgetList> {
                     ),
                   ),
                 ),
-              ),
+              ),),
+
             ],
           );
         }),

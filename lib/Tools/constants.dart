@@ -42,3 +42,6 @@ const TextTheme TEXT_THEME_DEFAULT = TextTheme(
 //將dir設定為DCIM的路徑，啊我這邊多一個app不知道有沒有用
 //var dcim_path = Directory("$dir/app");
 
+
+
+

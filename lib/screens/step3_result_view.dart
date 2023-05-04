@@ -3,8 +3,10 @@ import 'package:kim_app/Tools/constants.dart';
 import 'package:kim_app/Tools/widgetfunction.dart';
 import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 import 'dart:io';
 
+import '../Tools/Data/TargetListData.dart';
 import '../Tools/PDF/PDFViewPage.dart';
 import '../Tools/SlideLeftRoute.dart';
 import '../Tools/PDF/PDFApi.dart';
@@ -27,6 +29,7 @@ class _Result_viewState extends State<Result_view> {
 
   @override
   Widget build(BuildContext context) {
+    var targetListData = Provider.of<TargetListData>(context);
     print("widget.riskScore: ${widget.riskScore}");
     return SafeArea(
       child: Scaffold(
@@ -243,7 +246,7 @@ class _Result_viewState extends State<Result_view> {
                                 //   SlideLeftRoute(widget: PDFApi()));
                                 final path =
                                     'assets/report/KIMAPP_NewReport.pdf';
-                                final file = await PDFApi.loadAsset(path);
+                                final file = await PDFApi.loadAsset(path,targetListData.isMan);
                                 openPDF(context, file);
                               } else {
                                 // 權限未被授予
@@ -283,6 +286,13 @@ class _Result_viewState extends State<Result_view> {
                           ),
                           InkWell(
                             onTap: () {
+
+                              targetListData.isCameraCompleted = false;
+                              targetListData.isGenderCompleted = false;
+                              targetListData.isChoiceButtonCompleted = false;
+
+                              targetListData.isMan = false;
+
                               Navigator.push(context,
                                   SlideRightRoute(widget: Homescreen()));
                             },
@@ -332,14 +342,15 @@ class _Result_viewState extends State<Result_view> {
         MaterialPageRoute(builder: (context) => PDFViewPage(file: file)),
       );
 
-  Future requestPermission() async {
-    if (await Permission.contacts.request().isGranted) {
-// Either the permission was already granted before or the user just granted it.
-    }
-// You can request multiple permissions at once.
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.storage,
-    ].request();
-    print(statuses[Permission.storage]);
-  }
+//   Future requestPermission() async {
+//     if (await Permission.contacts.request().isGranted) {
+// // Either the permission was already granted before or the user just granted it.
+//     }
+// // You can request multiple permissions at once.
+//     Map<Permission, PermissionStatus> statuses = await [
+//       Permission.storage,
+//       Permission.manageExternalStorage,
+//     ].request();
+//     print(statuses[Permission.storage]);
+//   }
 }

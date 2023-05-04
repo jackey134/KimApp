@@ -50,6 +50,7 @@ Future requestPermission() async {
 // You can request multiple permissions at once.
   Map<Permission, PermissionStatus> statuses = await [
     Permission.storage,
+    Permission.manageExternalStorage,
   ].request();
   print(statuses[Permission.storage]);
 }

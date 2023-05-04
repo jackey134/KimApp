@@ -175,7 +175,10 @@ class PoseLevel {
   static String poseResult = getFinalResult();
   static int poseLevel = getPoseLevel();
 
+
+
   static getPoseLevel(){
+    print("姿態評級得分: "+poseResult);
     int poseScore = 0;
     if(poseResult == "label0"){
       poseScore = 1;

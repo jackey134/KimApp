@@ -2,12 +2,15 @@ import 'dart:io';
 import 'package:external_path/external_path.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
+import '../Data/TargetListData.dart';
 import '../Kim/Kim_Constans.dart';
 
+
 class PDFApi {
-  static Future<File> loadAsset(String path) async {
+  static Future<File> loadAsset(String path, bool isMale) async {
     final data = await rootBundle.load(path);
     final bytes = data.buffer.asUint8List();
 
@@ -20,14 +23,18 @@ class PDFApi {
 
     // 在頁面上添加文本
 
-    //男荷重
-    page.graphics.drawString('${LoadLevel.manLoadLeveling()}',
-        PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(260, 205, 100, 100));
-    //女荷重
-    page.graphics.drawString('${LoadLevel.girlLoadLeveling()}',
-        PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(415, 205, 100, 100));
+    if(isMale){
+      //男荷重
+      page.graphics.drawString('${LoadLevel.manLoadLeveling()}',
+          PdfStandardFont(PdfFontFamily.helvetica, 20),
+          bounds: Rect.fromLTWH(260, 205, 100, 100));
+    }else{
+      //女荷重
+      page.graphics.drawString('${LoadLevel.girlLoadLeveling()}',
+          PdfStandardFont(PdfFontFamily.helvetica, 20),
+          bounds: Rect.fromLTWH(415, 205, 100, 100));
+    }
+
     //工作狀況評級
     page.graphics.drawString('${WorkingCondition.workingConditionLevel}',
         PdfStandardFont(PdfFontFamily.helvetica, 20),

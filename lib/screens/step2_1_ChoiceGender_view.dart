@@ -5,7 +5,9 @@ import 'package:kim_app/screens/homescreen.dart';
 import 'package:kim_app/screens/step2_2_GirlChoiceButton_view.dart';
 import 'package:kim_app/screens/step2_2_MenChoiceButton_view.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
 
+import '../Tools/Data/TargetListData.dart';
 import '../Tools/SlideRightRoute.dart';
 import '../Tools/constants.dart';
 import 'TargetList.dart';
@@ -21,6 +23,7 @@ class Step2_choicegender_view extends StatefulWidget {
 class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
   @override
   Widget build(BuildContext context) {
+    var targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     bool _isMan = true;
 
@@ -39,7 +42,7 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                       Navigator.pop(
                           context,
                           SlideLeftRoute(
-                              widget: const TartgetList(isMan: false)));
+                              widget: const TargetList()));
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 8, top: 8),
@@ -84,13 +87,13 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                   children: [
                     InkWell(
                       onTap: () {
-                        setState(() {
-                          _isMan = true;
-                        });
+                        targetListData.isMan = true;
+                        targetListData.isGenderCompleted = true;
+                        print('isGenderCompleted: ${targetListData.isGenderCompleted}');
                         Navigator.push(
                           context,
                           SlideRightRoute(
-                            widget: TartgetList(isMan: _isMan),
+                            widget: TargetList(),
                           ),
                         );
                       },
@@ -119,13 +122,13 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                     ),
                     InkWell(
                       onTap: () {
-                        setState(() {
-                          _isMan = false;
-                        });
+                        targetListData.isMan = false;
+                        targetListData.isGenderCompleted = true;
+                        print('isGenderCompleted: ${targetListData.isGenderCompleted}');
                         Navigator.push(
                           context,
                           SlideRightRoute(
-                            widget: TartgetList(isMan: _isMan),
+                            widget: TargetList(),
                           ),
                         );
                       },

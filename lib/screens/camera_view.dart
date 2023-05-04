@@ -38,9 +38,7 @@ Future _fromFutureToString(Future<String> str) {
   return Future.value(str);
 }
 
-String getFinalResult(){
-  return label_final_result;
-}
+
 
 Future<void> processResultList(List<List<dynamic>> resultList) async {
   late String label_result;
@@ -102,6 +100,10 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
     label_final_result = 'label0';
   }
   print(label_final_result); //輸出最終評級
+}
+
+String getFinalResult(){
+  return label_final_result;
 }
 
 class CameraView extends StatefulWidget {
