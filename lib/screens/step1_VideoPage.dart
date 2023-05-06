@@ -101,8 +101,8 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
-    print("width: $width}");
-    print("height: $height");
+    // print("width: $width}");
+    // print("height: $height");
 
     Future<void> startVideoRecording(control_num) async {
       try {
@@ -136,8 +136,8 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                 GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {
-                    // Navigator.pop(
-                    //     context, SlideLeftRoute(widget: Homescreen()));
+                    Navigator.pop(
+                        context, SlideLeftRoute(widget: TargetList()));
                   },
                   child: Container(
                     padding: EdgeInsets.only(left: 8, top: 8),
@@ -249,7 +249,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               ],
             ),
             Visibility(
-              visible: number >= 10,
+              visible: number >= 15,
               child: Align(
               alignment: Alignment.topRight,
               child: Padding(

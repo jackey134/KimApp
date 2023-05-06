@@ -169,11 +169,27 @@ class _Result_viewState extends State<Result_view> {
                                 ),
                               ),
                               Center(
-                                child: Text(
+                                child: widget.riskScore == 1 ? Text(
                                   "目前風險等級為第1級為低負荷狀態\n非常良好的姿態!請繼續維持下去。",
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.red),
-                                ),
+                                ) : widget.riskScore == 2 ? Text(
+                                  "目前風險等級為第2級為中等負載狀態\n姿態稍微不正確!需慢慢調整自我姿態。",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.red),
+                                ) : widget.riskScore == 4 ? Text(
+                                  "目前風險等級為第4級為中高負載狀態\n姿態不正確!需要定期檢查。",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.red),
+                                ) : widget.riskScore == 8 ? Text(
+                                  "目前風險等級為第四級為高負載狀態\n姿態嚴重不正確!需立刻進行改善。",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.red),
+                                ) : Text(
+                                  "錯誤",
+                                  style: TextStyle(
+                                      fontSize: 20, color: Colors.red),
+                                )
                               ),
                             ],
                           ),
@@ -216,11 +232,27 @@ class _Result_viewState extends State<Result_view> {
                           child: Stack(
                             children: [
                               Center(
-                                child: Text(
+                                child: widget.riskScore == 1 ? Text(
                                   "此種風險等級不易產生生理做載的情形發生\n為最理想標準的姿態。",
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
-                                ),
+                                ) : widget.riskScore == 2 ? Text(
+                                  "此種風險等級需進一步調查及必要時進行改善\n針對此類族群應進行工作再設計。",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                ) : widget.riskScore == 4 ? Text(
+                                  "此種風險等級需近日內進行進一步調查及改善\n針對此類族群建議進行工作改善。",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                ) : widget.riskScore == 8 ? Text(
+                                  "此種風險等級必須立即進行調查及改善\n針對此類族群必須進行工作改善。",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                ) : Text(
+                                  "錯誤",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.white),
+                                )
                               ),
                             ],
                           ),
