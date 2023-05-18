@@ -44,10 +44,33 @@ class _Step2_menchoicebutton_viewState
 
   int _selectedButtonValue = 0;
 
+  Future<void> showAlertDialog() async {
+    return showDialog<void>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              "注意",
+              style: TextStyle(fontSize: 30),
+            ),
+            content: Text(
+              "有選項未填!!",
+              style: TextStyle(fontSize: 20),
+            ),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text("確定"))
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var targetListData = Provider.of<TargetListData>(context);
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
+
     return SafeArea(
         child: Scaffold(
       backgroundColor: colorPaleGray,
@@ -119,106 +142,104 @@ class _Step2_menchoicebutton_viewState
                       child: Column(
                         children: <Widget>[
                           Scrollbar(
-                              child: Container(
-                                  height: 450,
-                                  child: ListView(
-                                    scrollDirection: Axis.vertical,
-                                    children: [
-                                      Mybutton(),
-                                      Container(
-                                          height: 35, // 高度
-                                          child: Divider(
-                                            thickness: 1, // 線的粗細
-                                            height: 10, // 線的高度
-                                            color: Colors.black, // 線的顏色
-                                          )),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: const [
-                                          Text(
-                                            "當前工作時長(三選一)",
-                                            style: TextStyle(fontSize: 20),
-                                          ),
-                                        ],
+                            child: Container(
+                              height: 450,
+                              child: ListView(
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  Mybutton(),
+                                  Container(
+                                      height: 35, // 高度
+                                      child: Divider(
+                                        thickness: 1, // 線的粗細
+                                        height: 10, // 線的高度
+                                        color: Colors.black, // 線的顏色
+                                      )),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "當前工作時長(三選一)",
+                                        style: TextStyle(fontSize: 20),
                                       ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: RadioListTile(
-                                                contentPadding:
-                                                    EdgeInsets.all(0.0),
-                                                title: Text(
-                                                  "(<5s)",
-                                                  style:
-                                                      TextStyle(fontSize: 15),
-                                                ),
-                                                value: 0,
-                                                groupValue:
-                                                    _selectedButtonValue,
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    _selectedButtonValue =
-                                                        value!;
-                                                  });
-                                                }),
-                                          ),
-                                          Expanded(
-                                            child: RadioListTile(
-                                                contentPadding:
-                                                    EdgeInsets.all(0.0),
-                                                title: Text(
-                                                  "(>5s)",
-                                                  style:
-                                                      TextStyle(fontSize: 15),
-                                                ),
-                                                value: 1,
-                                                groupValue:
-                                                    _selectedButtonValue,
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    _selectedButtonValue =
-                                                        value!;
-                                                  });
-                                                }),
-                                          ),
-                                          Expanded(
-                                            child: RadioListTile(
-                                                contentPadding:
-                                                    EdgeInsets.all(0.0),
-                                                title: Text(
-                                                  ">5m",
-                                                  style:
-                                                      TextStyle(fontSize: 15),
-                                                ),
-                                                value: 2,
-                                                groupValue:
-                                                    _selectedButtonValue,
-                                                onChanged: (value) {
-                                                  setState(() {
-                                                    _selectedButtonValue =
-                                                        value!;
-                                                  });
-                                                }),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                          height: 35, // 高度
-                                          child: Divider(
-                                            thickness: 1, // 線的粗細
-                                            height: 10, // 線的高度
-                                            color: Colors.black, // 線的顏色
-                                          )),
-                                      IndexedStack(
-                                          index: _selectedButtonValue,
-                                          children: [
-                                            Mybutton2(),
-                                            Mybutton3(),
-                                            Mybutton4()
-                                          ]),
                                     ],
-                                  )))
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: RadioListTile(
+                                            contentPadding: EdgeInsets.all(0.0),
+                                            title: Text(
+                                              "(<5s)",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                            value: 0,
+                                            groupValue: _selectedButtonValue,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _selectedButtonValue = value!;
+                                                targetListData.isLiftingLevelChoiceCompleted = false;
+                                                targetListData.isHoldingLevelChoiceCompleted = false;
+                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                              });
+                                            }),
+                                      ),
+                                      Expanded(
+                                        child: RadioListTile(
+                                            contentPadding: EdgeInsets.all(0.0),
+                                            title: Text(
+                                              "(>5s)",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                            value: 1,
+                                            groupValue: _selectedButtonValue,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _selectedButtonValue = value!;
+                                                targetListData.isLiftingLevelChoiceCompleted = false;
+                                                targetListData.isHoldingLevelChoiceCompleted = false;
+                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                              });
+                                            }),
+                                      ),
+                                      Expanded(
+                                        child: RadioListTile(
+                                            contentPadding: EdgeInsets.all(0.0),
+                                            title: Text(
+                                              ">5m",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                            value: 2,
+                                            groupValue: _selectedButtonValue,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _selectedButtonValue = value!;
+                                                targetListData.isLiftingLevelChoiceCompleted = false;
+                                                targetListData.isHoldingLevelChoiceCompleted = false;
+                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                              });
+                                            }),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                      height: 35, // 高度
+                                      child: Divider(
+                                        thickness: 1, // 線的粗細
+                                        height: 10, // 線的高度
+                                        color: Colors.black, // 線的顏色
+                                      )),
+                                  IndexedStack(
+                                      index: _selectedButtonValue,
+                                      children: [
+                                        Mybutton2(),
+                                        Mybutton3(),
+                                        Mybutton4()
+                                      ]),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -235,15 +256,42 @@ class _Step2_menchoicebutton_viewState
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () {
-                    targetListData.isChoiceButtonCompleted = true;
-                    print('isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
-                    Navigator.pop(
-                      context,
-                      SlideRightRoute(
-                        widget: TargetList(
+                    print(
+                        'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
+                    print(
+                        'isLoadLevelChoiceCompleted:${targetListData.isLoadLevelChoiceCompleted}');
+                    print(
+                        'isWorkingConditionChoiceCompleted:${targetListData.isWorkingConditionChoiceCompleted}');
+                    print(
+                        'isLiftingLevelChoiceCompleted:${targetListData.isLiftingLevelChoiceCompleted}');
+                    print(
+                        'isHoldingLevelChoiceCompleted:${targetListData.isHoldingLevelChoiceCompleted}');
+                    print(
+                        'isCarryingLevelChoiceCompleted:${targetListData.isCarryingLevelChoiceCompleted}');
+
+                    if (targetListData.isLoadLevelChoiceCompleted &&
+                        targetListData.isWorkingConditionChoiceCompleted &&
+                        (targetListData.isLiftingLevelChoiceCompleted ||
+                            targetListData.isHoldingLevelChoiceCompleted ||
+                            targetListData.isCarryingLevelChoiceCompleted)) {
+
+                      targetListData.isChoiceButtonCompleted = true;
+
+                      targetListData.isLoadLevelChoiceCompleted = false;
+                      targetListData.isWorkingConditionChoiceCompleted = false;
+                      targetListData.isLiftingLevelChoiceCompleted = false;
+                      targetListData.isHoldingLevelChoiceCompleted = false;
+                      targetListData.isCarryingLevelChoiceCompleted = false;
+
+                      Navigator.push(
+                        context,
+                        SlideRightRoute(
+                          widget: TargetList(),
                         ),
-                      ),
-                    );
+                      );
+                    } else {
+                      showAlertDialog();
+                    }
                   },
                   child: Container(
                     alignment: Alignment.topRight,

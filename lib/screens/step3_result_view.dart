@@ -182,7 +182,7 @@ class _Result_viewState extends State<Result_view> {
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.red),
                                 ) : widget.riskScore == 8 ? Text(
-                                  "目前風險等級為第四級為高負載狀態\n姿態嚴重不正確!需立刻進行改善。",
+                                  "目前風險等級為第8級為高負載狀態\n姿態嚴重不正確!需立刻進行改善。",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.red),
                                 ) : Text(
@@ -273,7 +273,7 @@ class _Result_viewState extends State<Result_view> {
                               var status = await Permission.storage.request();
                               if (status.isGranted) {
                                 // 權限已授予 //這邊記得要改寫假如權限有跑過要職接近下一個
-                                createPDFNewDir();
+                                await createPDFNewDir();
                                 // Navigator.push(context,
                                 //   SlideLeftRoute(widget: PDFApi()));
                                 final path =
@@ -324,6 +324,13 @@ class _Result_viewState extends State<Result_view> {
                               targetListData.isChoiceButtonCompleted = false;
 
                               targetListData.isMan = false;
+
+                              targetListData.isLoadLevelChoiceCompleted = false;
+                              targetListData.isWorkingConditionChoiceCompleted = false;
+                              targetListData.isLiftingLevelChoiceCompleted = false;
+                              targetListData.isHoldingLevelChoiceCompleted = false;
+                              targetListData.isCarryingLevelChoiceCompleted = false;
+
 
                               Navigator.push(context,
                                   SlideRightRoute(widget: Homescreen()));

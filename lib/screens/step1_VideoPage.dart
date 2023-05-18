@@ -33,6 +33,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
   bool _isCounting = false;
   bool _isTap = false;
   bool _isAdding = false;
+  bool _isLoading = false;
 
   int count = 0;
 
@@ -82,7 +83,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               style: TextStyle(fontSize: 30),
             ),
             content: Text(
-              "影片時長須超過15秒",
+              "影片時長須超過10秒",
               style: TextStyle(fontSize: 20),
             ),
             actions: <Widget>[
@@ -93,6 +94,31 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
           );
         });
   }
+
+  Future<void> startLoading() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+
+    //await Future.delayed(Duration(seconds: 1)); // 假設計算需要 1 秒鐘
+    processResultList(resultList);
+
+
+    await Future.delayed(Duration(seconds: 5)); // 5秒的延遲
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    Navigator.pop(
+      context,
+      SlideRightRoute(
+        widget: TargetList(),
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -206,6 +232,14 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                               await showAlertDialog();
                             },
                           )),
+                      Positioned.fill(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: _isLoading
+                              ? CircularProgressIndicator()
+                              : Container(),
+                        ),
+                      ),
                     ],
                   )
                 ],
@@ -249,46 +283,43 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               ],
             ),
             Visibility(
-              visible: number >= 15,
+              visible: number >= 10,
               child: Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: InkWell(
-                  onTap: () async {
-                    await Future.delayed(Duration(seconds: 1)); // 假設計算需要 1 秒鐘
-                    processResultList(resultList);
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: InkWell(
+                    onTap: () async {
 
-                    targetListData.isCameraCompleted = true;
-                    print(
-                        'isCameraCompleted: ${targetListData.isCameraCompleted}');
+                      number = 0;
 
-                    Navigator.pop(
-                      context,
-                      SlideRightRoute(
-                        widget: TargetList(),
+                      startLoading();
+
+                      targetListData.isCameraCompleted = true;
+                      print(
+                          'isCameraCompleted: ${targetListData.isCameraCompleted}');
+
+
+                    },
+                    child: Container(
+                      alignment: Alignment.topRight,
+                      width: constraints.maxWidth * 0.3,
+                      height: constraints.maxHeight * 0.07,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: const Color(0xffF5F49B),
                       ),
-                    );
-                  },
-                  child: Container(
-                    alignment: Alignment.topRight,
-                    width: constraints.maxWidth * 0.3,
-                    height: constraints.maxHeight * 0.07,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: const Color(0xffF5F49B),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "完成",
-                        style: TextStyle(fontSize: 30),
+                      child: Center(
+                        child: Text(
+                          "完成",
+                          style: TextStyle(fontSize: 30),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),),
-
+            ),
           ],
         );
       }),

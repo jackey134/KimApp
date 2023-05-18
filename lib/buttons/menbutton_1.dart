@@ -2,6 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
+
+import '../Tools/Data/TargetListData.dart';
 
 class Mybutton extends StatefulWidget {
   const Mybutton({Key? key}) : super(key: key);
@@ -13,8 +16,6 @@ class Mybutton extends StatefulWidget {
 class _Mybutton extends State<Mybutton> {
   int _selection1 = 0;
   int _selection2 = 0;
-  int _selectedButtonValue = 0;
-  String _selectedValue="0" as String;
 
   selectTime1(int? timeSelected) {
     setState(() {
@@ -28,15 +29,15 @@ class _Mybutton extends State<Mybutton> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     return Container(
       child: Column(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 "搬運物荷重",
                 style: TextStyle(fontSize: 20),
@@ -49,6 +50,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection1 = 1;
                 LoadLevel.manLoad = 1;
                 print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -82,6 +84,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection1 = 2;
                 LoadLevel.manLoad = 2;
                 print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -115,6 +118,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection1 = 3;
                 LoadLevel.manLoad = 3;
                 print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -148,6 +152,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection1 = 4;
                 LoadLevel.manLoad = 4;
                 print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -181,6 +186,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection1 = 5;
                 LoadLevel.manLoad = 5;
                 print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -210,15 +216,14 @@ class _Mybutton extends State<Mybutton> {
           ),
           Container(
               height: 35, // 高度
-              child:Divider(
+              child: Divider(
                 thickness: 1, // 線的粗細
                 height: 10, // 線的高度
                 color: Colors.black, // 線的顏色
-              )
-          ),
+              )),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 "工作狀態評級",
                 style: TextStyle(fontSize: 20),
@@ -230,7 +235,9 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection2 = 1;
                 //WorkingCondition.levelGood();
-                print("當前工作狀況評級為: ${WorkingCondition.levelGood()}");
+                WorkingCondition.workingScore = 1;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -263,7 +270,9 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection2 = 2;
                 //WorkingCondition.levelNormal();
-                print("當前工作狀況評級為: ${WorkingCondition.levelNormal()}");
+                WorkingCondition.workingScore = 2;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -296,7 +305,9 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection2 = 3;
                 //WorkingCondition.levelBad();
-                print("當前工作狀況評級為: ${WorkingCondition.levelBad()}");
+                WorkingCondition.workingScore = 3;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -324,49 +335,6 @@ class _Mybutton extends State<Mybutton> {
               ],
             ),
           ),
-          // Row(
-          //   children: [
-          //     Expanded(
-          //         child:RadioListTile(
-          //           contentPadding: EdgeInsets.all(0.0),
-          //          title: Text("抬舉與置放作業",style: TextStyle(fontSize: 12),),
-          //         value: 1,
-          //          groupValue: _selectedButtonValue,
-          //          onChanged: (value){
-          //            setState(() {
-          //              _selectedButtonValue=value!;
-          //            });
-          //          }
-          //         ),
-          //     ),
-          //     Expanded(
-          //       child:RadioListTile(
-          //           contentPadding: EdgeInsets.all(0.0),
-          //           title: Text("握持時間",style: TextStyle(fontSize: 12),),
-          //           value: 2,
-          //           groupValue: _selectedButtonValue,
-          //           onChanged: (value){
-          //             setState(() {
-          //               _selectedButtonValue=value!;
-          //             });
-          //           }
-          //       ),
-          //     ),
-          //     Expanded(
-          //       child:RadioListTile(
-          //           contentPadding: EdgeInsets.all(0.0),
-          //           title: Text("運送作業",style: TextStyle(fontSize: 12),),
-          //           value: 3,
-          //           groupValue: _selectedButtonValue,
-          //           onChanged: (value){
-          //             setState(() {
-          //               _selectedButtonValue=value!;
-          //             });
-          //           }
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ],
       ),
     );

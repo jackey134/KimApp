@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
+
+import '../Tools/Data/TargetListData.dart';
 
 class Mybutton2_Girl extends StatefulWidget {
   const Mybutton2_Girl({Key? key}) : super(key: key);
@@ -21,6 +24,7 @@ class _Mybutton2_Girl
 
   @override
   Widget build(BuildContext context) {
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -39,6 +43,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 1;
                 TimeLevel.liftingScore = 1;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -72,6 +77,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 2;
                 TimeLevel.liftingScore = 2;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -105,6 +111,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 3;
                 TimeLevel.liftingScore = 4;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -138,6 +145,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 4;
                 TimeLevel.liftingScore = 6;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -171,6 +179,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 5;
                 TimeLevel.liftingScore = 8;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -204,6 +213,7 @@ class _Mybutton2_Girl
                 _selection3_Girl = 6;
                 TimeLevel.liftingScore = 10;
                 print("當前女性抬舉或置放作業時間級別點數為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(

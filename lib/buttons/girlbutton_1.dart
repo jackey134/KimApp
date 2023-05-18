@@ -2,6 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
+
+import '../Tools/Data/TargetListData.dart';
 
 class Mybutton_Girl extends StatefulWidget {
   const Mybutton_Girl({Key? key}) : super(key: key);
@@ -28,6 +31,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
 
   @override
   Widget build(BuildContext context) {
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -46,6 +50,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 _selection1_Girl = 1;
                 LoadLevel.manLoad = 1;
                 print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -79,6 +84,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 _selection1_Girl = 2;
                 LoadLevel.manLoad = 2;
                 print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -112,6 +118,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 _selection1_Girl = 3;
                 LoadLevel.manLoad = 3;
                 print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -145,6 +152,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 _selection1_Girl = 4;
                 LoadLevel.manLoad = 4;
                 print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -178,6 +186,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                 _selection1_Girl = 5;
                 LoadLevel.manLoad = 5;
                 print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+                targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -226,7 +235,9 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection2_Girl = 1;
-                print("當前工作狀況評級為: ${WorkingCondition.levelGood()}");
+                WorkingCondition.workingScore = 1;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -258,7 +269,9 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection2_Girl = 2;
-                print("當前工作狀況評級為: ${WorkingCondition.levelNormal()}");
+                WorkingCondition.workingScore = 2;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -290,7 +303,9 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection2_Girl = 3;
-                print("當前工作狀況評級為: ${WorkingCondition.levelBad()}");
+                WorkingCondition.workingScore = 3;
+                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
             child: Stack(

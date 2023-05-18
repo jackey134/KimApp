@@ -14,20 +14,22 @@ class RiskLevel {
   }
 }
 
-class RiskLevelScore{
+class RiskLevelScore {
   static int? score;
-  static scoreNumber(){
+
+  static scoreNumber() {
     int total = RiskLevel.riskLevelCount();
-    if(total < 10){
+    if (total < 10) {
       score = 1;
-    }else if(total >10 && total < 25){
+    } else if (total > 10 && total < 25) {
       score = 2;
-    }else if(total >25 && total < 50){
+    } else if (total > 25 && total < 50) {
       score = 4;
-    }else if(total >=50){
+    } else if (total >= 50) {
       score = 8;
     }
-    print("${total} = ${TimeLevel.timeLevel} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
+    print(
+        "${total} = ${TimeLevel.timeLevel} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
 
     return score;
   }
@@ -36,7 +38,8 @@ class RiskLevelScore{
 //時間評級
 class TimeLevel {
   // ignore: non_constant_identifier_names
-  static int timeLevel = 0; //使用static的意義在進入記憶體的時候就給定值，因為會使用到多次參數所以寫入static以降低記憶體需求
+  static int timeLevel =
+      0; //使用static的意義在進入記憶體的時候就給定值，因為會使用到多次參數所以寫入static以降低記憶體需求
   // 資料來源:https://ithelp.ithome.com.tw/articles/10230484
   // ignore: non_constant_identifier_names
   static int liftingScore = 0;
@@ -154,19 +157,31 @@ class LoadLevel {
 //工作狀況評級
 class WorkingCondition {
   // ignore: non_constant_identifier_names
-  static int workingConditionLevel = 0;
+  static int workingConditionLevel = workLevel();
+  static int workingScore = 0;
 
-  static levelGood() {
-    return workingConditionLevel = 0;
+  static workLevel() {
+    if (workingScore == 1) {
+      workingConditionLevel = 0;
+    } else if (workingScore == 2) {
+      workingConditionLevel = 1;
+    } else if (workingScore == 3) {
+      workingConditionLevel = 2;
+    }
+    return workingConditionLevel;
   }
 
-  static levelNormal() {
-    return workingConditionLevel = 1;
-  }
-
-  static levelBad() {
-    return workingConditionLevel = 2;
-  }
+// static levelGood() {
+//   return workingConditionLevel = 0;
+// }
+//
+// static levelNormal() {
+//   return workingConditionLevel = 1;
+// }
+//
+// static levelBad() {
+//   return workingConditionLevel = 2;
+// }
 }
 
 //姿勢評級
@@ -175,26 +190,21 @@ class PoseLevel {
   static String poseResult = getFinalResult();
   static int poseLevel = getPoseLevel();
 
-
-
-  static getPoseLevel(){
-    print("姿態評級得分: "+poseResult);
+  static getPoseLevel() {
+    print("姿態評級得分: " + poseResult);
     int poseScore = 0;
-    if(poseResult == "label0"){
+    if (poseResult == "label0") {
       poseScore = 1;
     }
-    if(poseResult == "label5"){
+    if (poseResult == "label5") {
       poseScore = 2;
     }
-    if(poseResult == "label10"){
+    if (poseResult == "label15") {
       poseScore = 4;
     }
-    if(poseResult == "label20"){
+    if (poseResult == "label20") {
       poseScore = 8;
     }
     return poseScore;
   }
 }
-
-
-

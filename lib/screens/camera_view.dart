@@ -303,8 +303,8 @@ class RenderLandmarks extends CustomPainter {
     ..strokeCap = StrokeCap.round
     ..strokeWidth = 3.0;
 
-  var edge_orange = Paint()
-    ..color = Colors.orange
+  var edge_red = Paint()
+    ..color = Colors.red
     ..strokeWidth = 3.0;
 
   List<Offset> points_green = [];
@@ -351,14 +351,14 @@ class RenderLandmarks extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (List<int> edge in edges) {
-      if (inferenceList[edge[0]][2] > 0.25 &&
-          inferenceList[edge[1]][2] > 0.25) {
+      if (inferenceList[edge[0]][2] > 0.3 &&
+          inferenceList[edge[1]][2] > 0.3) {
         double vertex1X = inferenceList[edge[0]][0].toDouble();
         double vertex1Y = inferenceList[edge[0]][1].toDouble();
         double vertex2X = inferenceList[edge[1]][0].toDouble();
         double vertex2Y = inferenceList[edge[1]][1].toDouble();
         canvas.drawLine(Offset(vertex1X, vertex1Y), Offset(vertex2X, vertex2Y),
-            edge_orange);
+            edge_red);
       }
     }
   }

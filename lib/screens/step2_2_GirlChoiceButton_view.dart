@@ -42,6 +42,32 @@ class _Step2_girlchoicebutton_viewState
     });
   }
   int _selectedButtonValue = 0;
+
+
+  Future<void> showAlertDialog() async {
+    return showDialog<void>(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              "注意",
+              style: TextStyle(fontSize: 30),
+            ),
+            content: Text(
+              "有選項未填!!",
+              style: TextStyle(fontSize: 20),
+            ),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text("確定"))
+            ],
+          );
+        });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     var targetListData = Provider.of<TargetListData>(context);
@@ -237,15 +263,42 @@ class _Step2_girlchoicebutton_viewState
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () {
-                    targetListData.isChoiceButtonCompleted = true;
-                    print('isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
-                    Navigator.pop(
-                      context,
-                      SlideRightRoute(
-                        widget: TargetList(
+                    print(
+                        'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
+                    print(
+                        'isLoadLevelChoiceCompleted:${targetListData.isLoadLevelChoiceCompleted}');
+                    print(
+                        'isWorkingConditionChoiceCompleted:${targetListData.isWorkingConditionChoiceCompleted}');
+                    print(
+                        'isLiftingLevelChoiceCompleted:${targetListData.isLiftingLevelChoiceCompleted}');
+                    print(
+                        'isHoldingLevelChoiceCompleted:${targetListData.isHoldingLevelChoiceCompleted}');
+                    print(
+                        'isCarryingLevelChoiceCompleted:${targetListData.isCarryingLevelChoiceCompleted}');
+
+                    if (targetListData.isLoadLevelChoiceCompleted &&
+                        targetListData.isWorkingConditionChoiceCompleted &&
+                        targetListData.isLiftingLevelChoiceCompleted ||
+                        targetListData.isHoldingLevelChoiceCompleted ||
+                        targetListData.isCarryingLevelChoiceCompleted
+                    ) {
+                      targetListData.isChoiceButtonCompleted = true;
+
+                      targetListData.isLoadLevelChoiceCompleted = false;
+                      targetListData.isWorkingConditionChoiceCompleted = false;
+                      targetListData.isLiftingLevelChoiceCompleted = false;
+                      targetListData.isHoldingLevelChoiceCompleted = false;
+                      targetListData.isCarryingLevelChoiceCompleted = false;
+
+                      Navigator.push(
+                        context,
+                        SlideRightRoute(
+                          widget: TargetList(),
                         ),
-                      ),
-                    );
+                      );
+                    }else{
+                      showAlertDialog();
+                    }
                   },
                   child: Container(
                     alignment: Alignment.topRight,

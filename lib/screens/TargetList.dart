@@ -26,16 +26,33 @@ class TargetList extends StatefulWidget {
 class _TartgetListState extends State<TargetList> {
   @override
   Widget build(BuildContext context) {
-    var targetListData = Provider.of<TargetListData>(context);
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
     //final height = size.height;
 
-
-
-
-
+    Future<void> showAlertDialog() async {
+      return showDialog<void>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(
+                "注意",
+                style: TextStyle(fontSize: 30),
+              ),
+              content: Text(
+                "請先選擇性別",
+                style: TextStyle(fontSize: 20),
+              ),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text("確定"))
+              ],
+            );
+          });
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -63,6 +80,7 @@ class _TartgetListState extends State<TargetList> {
                   ),
                 ),
               ),
+
               //title
               Padding(
                 padding: const EdgeInsets.only(left: 12),
@@ -92,9 +110,6 @@ class _TartgetListState extends State<TargetList> {
               //拍攝影片
               InkWell(
                 onTap: () async {
-
-
-
                   Navigator.push(
                       context, SlideRightRoute(widget: step1_VideoPage()));
                 },
@@ -174,13 +189,13 @@ class _TartgetListState extends State<TargetList> {
                         ),
                       ],
                     ),
-                    child:  Stack(
+                    child: Stack(
                       children: [
                         Positioned(
                           top: 10,
                           left: 15,
                           child: Text(
-                            "完成(${targetListData.isGenderCompleted? "1" : "0"}/1)",
+                            "完成(${targetListData.isGenderCompleted ? "1" : "0"}/1)",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -217,13 +232,17 @@ class _TartgetListState extends State<TargetList> {
               //點選資料
               InkWell(
                 onTap: () {
-                  targetListData.isMan
-                      ? Navigator.push(context,
-                          SlideRightRoute(widget: Step2_menchoicebutton_view()))
-                      : Navigator.push(
-                          context,
-                          SlideRightRoute(
-                              widget: Step2_girlchoicebutton_view()));
+                  targetListData.isGenderCompleted
+                      ? targetListData.isMan
+                          ? Navigator.push(
+                              context,
+                              SlideRightRoute(
+                                  widget: Step2_menchoicebutton_view()))
+                          : Navigator.push(
+                              context,
+                              SlideRightRoute(
+                                  widget: Step2_girlchoicebutton_view()))
+                      : showAlertDialog();
                 },
                 child: Padding(
                   padding: EdgeInsets.only(left: 12, top: 30, right: 12),
@@ -240,13 +259,13 @@ class _TartgetListState extends State<TargetList> {
                         ),
                       ],
                     ),
-                    child:  Stack(
+                    child: Stack(
                       children: [
                         Positioned(
                           top: 10,
                           left: 15,
                           child: Text(
-                            "完成(${targetListData.isChoiceButtonCompleted? "1" : "0"}/1)",
+                            "完成(${targetListData.isChoiceButtonCompleted ? "1" : "0"}/1)",
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
@@ -290,32 +309,32 @@ class _TartgetListState extends State<TargetList> {
                     targetListData.isCameraCompleted &&
                     targetListData.isGenderCompleted,
                 child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    SlideRightRoute(
-                      widget: Result_view(
-                        riskScore: RiskLevel.getScore(),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(
+                        widget: Result_view(
+                          riskScore: RiskLevel.getScore(),
+                        ),
                       ),
+                    );
+                  },
+                  child: Container(
+                    width: constraints.maxWidth * 0.8,
+                    height: constraints.maxHeight * 0.09,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: const Color(0xffF5F49B),
                     ),
-                  );
-                },
-                child: Container(
-                  width: constraints.maxWidth * 0.8,
-                  height: constraints.maxHeight * 0.09,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.0),
-                    color: const Color(0xffF5F49B),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "KIM風險等級評估",
-                      style: TextStyle(fontSize: 30),
+                    child: Center(
+                      child: Text(
+                        "KIM風險等級評估",
+                        style: TextStyle(fontSize: 30),
+                      ),
                     ),
                   ),
                 ),
-              ),),
-
+              ),
             ],
           );
         }),

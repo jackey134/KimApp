@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Data/TargetListData.dart';
 import 'package:kim_app/Tools/SlideRightRoute.dart';
+import 'package:kim_app/screens/teachScreen.dart';
 import 'package:provider/provider.dart';
 import '../Tools/constants.dart';
 import '../Tools/folders/create_folder.dart';
@@ -23,7 +24,7 @@ class _HomescreenState extends State<Homescreen> {
 
 
     requestPermission();
-    var targetListData = Provider.of<TargetListData>(context);
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
@@ -99,6 +100,8 @@ class _HomescreenState extends State<Homescreen> {
               SizedBox(
                 height: constraints.maxHeight * 0.08,
               ),
+
+
               InkWell(
                 onTap: () {
 
@@ -113,6 +116,9 @@ class _HomescreenState extends State<Homescreen> {
                       widget: TargetList(),
                     ),
                   );
+
+
+
                 },
                 child: Container(
                   width: constraints.maxWidth * 0.8,

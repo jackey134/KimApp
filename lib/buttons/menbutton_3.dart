@@ -2,6 +2,9 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
+
+import '../Tools/Data/TargetListData.dart';
 
 class Mybutton3 extends StatefulWidget {
   const Mybutton3({Key? key}) : super(key: key);
@@ -21,6 +24,7 @@ class _Mybutton3 extends State<Mybutton3> {
 
   @override
   Widget build(BuildContext context) {
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -39,6 +43,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 1;
                 TimeLevel.holdingTimeScore = 1;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -72,6 +77,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 2;
                 TimeLevel.holdingTimeScore = 2;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -105,6 +111,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 3;
                 TimeLevel.holdingTimeScore = 4;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -138,6 +145,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 4;
                 TimeLevel.holdingTimeScore = 6;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -171,6 +179,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 5;
                 TimeLevel.holdingTimeScore = 8;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -204,6 +213,7 @@ class _Mybutton3 extends State<Mybutton3> {
                 _selection4 = 6;
                 TimeLevel.holdingTimeScore = 10;
                 print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
             child: Stack(

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
+import 'package:provider/provider.dart';
+
+import '../Tools/Data/TargetListData.dart';
 
 class Mybutton2 extends StatefulWidget {
   const Mybutton2({Key? key}) : super(key: key);
 
   @override
-  State<Mybutton2> createState() =>
-      _Mybutton2();
+  State<Mybutton2> createState() => _Mybutton2();
 }
 
-class _Mybutton2
-    extends State<Mybutton2> {
+class _Mybutton2 extends State<Mybutton2> {
   int _selection3 = 0;
 
   selectTime3(int? timeSelected) {
@@ -21,6 +22,7 @@ class _Mybutton2
 
   @override
   Widget build(BuildContext context) {
+    TargetListData targetListData = Provider.of<TargetListData>(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -39,6 +41,7 @@ class _Mybutton2
                 _selection3 = 1;
                 TimeLevel.liftingScore = 1;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -72,6 +75,7 @@ class _Mybutton2
                 _selection3 = 2;
                 TimeLevel.liftingScore = 2;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -105,6 +109,7 @@ class _Mybutton2
                 _selection3 = 3;
                 TimeLevel.liftingScore = 4;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -138,6 +143,7 @@ class _Mybutton2
                 _selection3 = 4;
                 TimeLevel.liftingScore = 6;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -171,6 +177,7 @@ class _Mybutton2
                 _selection3 = 5;
                 TimeLevel.liftingScore = 8;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
@@ -204,6 +211,7 @@ class _Mybutton2
                 _selection3 = 6;
                 TimeLevel.liftingScore = 10;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                targetListData.isLiftingLevelChoiceCompleted = true;
               });
             },
             child: Stack(
