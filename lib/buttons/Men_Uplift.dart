@@ -2,27 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
 import 'package:provider/provider.dart';
 
+import '../Tools/Data/ButtonData.dart';
 import '../Tools/Data/TargetListData.dart';
 
 class Mybutton2 extends StatefulWidget {
-  const Mybutton2({Key? key}) : super(key: key);
+  int? myButton2selection;
+  Mybutton2({Key? key,required this.myButton2selection}) : super(key: key);
 
   @override
   State<Mybutton2> createState() => _Mybutton2();
 }
 
 class _Mybutton2 extends State<Mybutton2> {
-  int _selection3 = 0;
+
 
   selectTime3(int? timeSelected) {
     setState(() {
-      _selection3 = timeSelected!;
+      widget.myButton2selection = timeSelected!;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
+    ButtonData buttonData = Provider.of<ButtonData>(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -38,10 +41,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 1;
+                widget.myButton2selection = 1;
                 TimeLevel.liftingScore = 1;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(1);
               });
             },
             child: Stack(
@@ -50,13 +54,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 100,
-                  color: _selection3 == 1 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 1 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 1,
                     ),
@@ -72,10 +76,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 2;
+                widget.myButton2selection = 2;
                 TimeLevel.liftingScore = 2;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(2);
               });
             },
             child: Stack(
@@ -84,13 +89,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 120,
-                  color: _selection3 == 2 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 2 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 2,
                     ),
@@ -106,10 +111,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 3;
+                widget.myButton2selection = 3;
                 TimeLevel.liftingScore = 4;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(3);
               });
             },
             child: Stack(
@@ -118,13 +124,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 130,
-                  color: _selection3 == 3 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 3 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 3,
                     ),
@@ -140,10 +146,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 4;
+                widget.myButton2selection = 4;
                 TimeLevel.liftingScore = 6;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(4);
               });
             },
             child: Stack(
@@ -152,13 +159,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 135,
-                  color: _selection3 == 4 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 4 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 4,
                     ),
@@ -174,10 +181,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 5;
+                widget.myButton2selection = 5;
                 TimeLevel.liftingScore = 8;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(5);
               });
             },
             child: Stack(
@@ -186,13 +194,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 140,
-                  color: _selection3 == 5 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 5 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 5,
                     ),
@@ -208,10 +216,11 @@ class _Mybutton2 extends State<Mybutton2> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection3 = 6;
+                widget.myButton2selection = 6;
                 TimeLevel.liftingScore = 10;
                 print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
+                buttonData.setMyButton2Selection(6);
               });
             },
             child: Stack(
@@ -220,13 +229,13 @@ class _Mybutton2 extends State<Mybutton2> {
                 Container(
                   height: 40,
                   width: 120,
-                  color: _selection3 == 6 ? Colors.green : Colors.white,
+                  color: widget.myButton2selection == 6 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection3,
+                      groupValue: widget.myButton2selection,
                       onChanged: selectTime3,
                       value: 6,
                     ),

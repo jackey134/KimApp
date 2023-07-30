@@ -27,31 +27,31 @@ class PDFApi {
       //男荷重
       page.graphics.drawString('${LoadLevel.manLoadLeveling()}',
           PdfStandardFont(PdfFontFamily.helvetica, 20),
-          bounds: Rect.fromLTWH(260, 205, 100, 100));
+          bounds: Rect.fromLTWH(260, 200, 100, 100));
     }else{
       //女荷重
       page.graphics.drawString('${LoadLevel.girlLoadLeveling()}',
           PdfStandardFont(PdfFontFamily.helvetica, 20),
-          bounds: Rect.fromLTWH(415, 205, 100, 100));
+          bounds: Rect.fromLTWH(395, 200, 100, 100));
     }
 
     //工作狀況評級
     page.graphics.drawString('${WorkingCondition.workingConditionLevel}',
         PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(340, 245, 100, 100));
+        bounds: Rect.fromLTWH(330, 230, 100, 100));
     //姿勢評級
     page.graphics.drawString(
         '${PoseLevel.poseLevel}', PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(340, 282, 100, 100));
+        bounds: Rect.fromLTWH(330, 262, 100, 100));
     //時間評級*加總分數
     page.graphics.drawString(
         '${TimeLevel.timeLevel} x ${(LoadLevel.loadLevel + PoseLevel.poseLevel + WorkingCondition.workingConditionLevel)}',
         PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(340, 345, 100, 100));
+        bounds: Rect.fromLTWH(315, 315, 100, 100));
     //最後得分
     page.graphics.drawString('${RiskLevel.riskLevelCount()}',
         PdfStandardFont(PdfFontFamily.helvetica, 20),
-        bounds: Rect.fromLTWH(415, 393, 100, 100));
+        bounds: Rect.fromLTWH(390, 359, 100, 100));
 
     // 把寫入的文字先存到List<int>裡面
     List<int> _bytes = await document.save();

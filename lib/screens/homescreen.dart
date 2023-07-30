@@ -3,9 +3,9 @@ import 'package:kim_app/Tools/Data/TargetListData.dart';
 import 'package:kim_app/Tools/SlideRightRoute.dart';
 import 'package:kim_app/screens/teachScreen.dart';
 import 'package:provider/provider.dart';
+import '../Tools/Data/ButtonData.dart';
 import '../Tools/constants.dart';
 import '../Tools/folders/create_folder.dart';
-import 'TargetList.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({
@@ -17,22 +17,13 @@ class Homescreen extends StatefulWidget {
 }
 
 class _HomescreenState extends State<Homescreen> {
-
-
   @override
   Widget build(BuildContext context) {
-
-
     requestPermission();
     TargetListData targetListData = Provider.of<TargetListData>(context);
-    final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
     //final height = size.height;
-
-
-
-
 
     return SafeArea(
       child: Scaffold(
@@ -101,24 +92,22 @@ class _HomescreenState extends State<Homescreen> {
                 height: constraints.maxHeight * 0.08,
               ),
 
-
               InkWell(
                 onTap: () {
-
-                  print('isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
+                  print(
+                      'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
                   print('isMan: ${targetListData.isMan}');
-                  print('isCameraCompleted: ${targetListData.isCameraCompleted}');
-                  print('isGenderCompleted: ${targetListData.isGenderCompleted}');
+                  print(
+                      'isCameraCompleted: ${targetListData.isCameraCompleted}');
+                  print(
+                      'isGenderCompleted: ${targetListData.isGenderCompleted}');
 
                   Navigator.push(
                     context,
                     SlideRightRoute(
-                      widget: TargetList(),
+                      widget: TeachScreen(),
                     ),
                   );
-
-
-
                 },
                 child: Container(
                   width: constraints.maxWidth * 0.8,

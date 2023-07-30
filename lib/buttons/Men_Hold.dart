@@ -4,27 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
 import 'package:provider/provider.dart';
 
+import '../Tools/Data/ButtonData.dart';
 import '../Tools/Data/TargetListData.dart';
 
-class Mybutton4 extends StatefulWidget {
-  const Mybutton4({Key? key}) : super(key: key);
+class Mybutton3 extends StatefulWidget {
+  int? myButton3selection;
+  Mybutton3({Key? key,required this.myButton3selection}) : super(key: key);
 
   @override
-  State<Mybutton4> createState() => _Mybutton4();
+  State<Mybutton3> createState() => _Mybutton3();
 }
 
-class _Mybutton4 extends State<Mybutton4> {
-  int _selection5 = 0;
 
-  selectTime5(int? timeSelected) {
+class _Mybutton3 extends State<Mybutton3> {
+
+
+  selectTime4(int? timeSelected) {
     setState(() {
-      _selection5 = timeSelected!;
+      widget.myButton3selection = timeSelected!;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
+    ButtonData buttonData = Provider.of<ButtonData>(context,listen: true);
     return Container(
       child: Column(
         children: <Widget>[
@@ -32,7 +36,7 @@ class _Mybutton4 extends State<Mybutton4> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
               Text(
-                "運送作業",
+                "握持作業",
                 style: TextStyle(fontSize: 20),
               ),
             ],
@@ -40,10 +44,11 @@ class _Mybutton4 extends State<Mybutton4> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection5 = 1;
-                TimeLevel.carryingDistanceScore = 1;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
+                widget.myButton3selection = 1;
+                TimeLevel.holdingTimeScore = 1;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(1);
               });
             },
             child: Stack(
@@ -51,19 +56,19 @@ class _Mybutton4 extends State<Mybutton4> {
               children: <Widget>[
                 Container(
                   height: 40,
-                  width: 110,
-                  color: _selection5 == 1 ? Colors.green : Colors.white,
+                  width: 100,
+                  color: widget.myButton3selection == 1 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
                       value: 1,
                     ),
                     Text(
-                      "< 300 m",
+                      "< 5 min",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -74,10 +79,11 @@ class _Mybutton4 extends State<Mybutton4> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection5 = 2;
-                TimeLevel.carryingDistanceScore = 2;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
+                widget.myButton3selection = 2;
+                TimeLevel.holdingTimeScore = 2;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(2);
               });
             },
             child: Stack(
@@ -85,19 +91,19 @@ class _Mybutton4 extends State<Mybutton4> {
               children: <Widget>[
                 Container(
                   height: 40,
-                  width: 140,
-                  color: _selection5 == 2 ? Colors.green : Colors.white,
+                  width: 120,
+                  color: widget.myButton3selection == 2 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
                       value: 2,
                     ),
                     Text(
-                      "300 m ~ 1 km",
+                      "5 ~ 15 min",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -108,78 +114,11 @@ class _Mybutton4 extends State<Mybutton4> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection5 = 3;
-                TimeLevel.carryingDistanceScore = 4;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
-              });
-            },
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: <Widget>[
-                Container(
-                  height: 40,
-                  width: 110,
-                  color: _selection5 == 3 ? Colors.green : Colors.white,
-                ),
-                Row(
-                  children: <Widget>[
-                    Radio(
-                      focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
-                      value: 3,
-                    ),
-                    Text(
-                      "1 ~ 4 km",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                _selection5 = 4;
-                TimeLevel.carryingDistanceScore = 6;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
-              });
-            },
-            child: Stack(
-              alignment: Alignment.centerLeft,
-              children: <Widget>[
-                Container(
-                  height: 40,
-                  width: 110,
-                  color: _selection5 == 4 ? Colors.green : Colors.white,
-                ),
-                Row(
-                  children: <Widget>[
-                    Radio(
-                      focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
-                      value: 4,
-                    ),
-                    Text(
-                      "4 ~ 8 km",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                _selection5 = 5;
-                TimeLevel.carryingDistanceScore = 8;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
+                widget.myButton3selection = 3;
+                TimeLevel.holdingTimeScore = 4;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(3);
               });
             },
             child: Stack(
@@ -188,18 +127,18 @@ class _Mybutton4 extends State<Mybutton4> {
                 Container(
                   height: 40,
                   width: 140,
-                  color: _selection5 == 5 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 3 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
-                      value: 5,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
+                      value: 3,
                     ),
                     Text(
-                      "8 km ~ 16km",
+                      "15 min ~ 1 hr",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -210,10 +149,11 @@ class _Mybutton4 extends State<Mybutton4> {
           InkWell(
             onTap: () {
               setState(() {
-                _selection5 = 6;
-                TimeLevel.carryingDistanceScore = 10;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
-                targetListData.isCarryingLevelChoiceCompleted = true;
+                widget.myButton3selection = 4;
+                TimeLevel.holdingTimeScore = 6;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(4);
               });
             },
             child: Stack(
@@ -222,18 +162,88 @@ class _Mybutton4 extends State<Mybutton4> {
                 Container(
                   height: 40,
                   width: 110,
-                  color: _selection5 == 6 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 4 ? Colors.green : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
                     Radio(
                       focusColor: Colors.white,
-                      groupValue: _selection5,
-                      onChanged: selectTime5,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
+                      value: 4,
+                    ),
+                    Text(
+                      "1 ~ 2 hrs",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              setState(() {
+                widget.myButton3selection = 5;
+                TimeLevel.holdingTimeScore = 8;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(5);
+              });
+            },
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  width: 110,
+                  color: widget.myButton3selection == 5 ? Colors.green : Colors.white,
+                ),
+                Row(
+                  children: <Widget>[
+                    Radio(
+                      focusColor: Colors.white,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
+                      value: 5,
+                    ),
+                    Text(
+                      "2 ~ 4 hrs",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              setState(() {
+                widget.myButton3selection = 6;
+                TimeLevel.holdingTimeScore = 10;
+                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                targetListData.isHoldingLevelChoiceCompleted = true;
+                buttonData.setMyButton3Selection(6);
+              });
+            },
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  width: 110,
+                  color: widget.myButton3selection == 6 ? Colors.green : Colors.white,
+                ),
+                Row(
+                  children: <Widget>[
+                    Radio(
+                      focusColor: Colors.white,
+                      groupValue: widget.myButton3selection,
+                      onChanged: selectTime4,
                       value: 6,
                     ),
                     Text(
-                      ">= 16 km",
+                      ">= 4 hrs",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],

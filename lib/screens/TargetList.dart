@@ -6,6 +6,7 @@ import 'package:kim_app/screens/step2_2_GirlChoiceButton_view.dart';
 import 'package:kim_app/screens/step2_2_MenChoiceButton_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
 import 'package:provider/provider.dart';
+import '../Tools/Data/ButtonData.dart';
 import '../Tools/Data/TargetListData.dart';
 import '../Tools/Kim/Kim_Constans.dart';
 import '../Tools/SlideLeftRoute.dart';
@@ -27,6 +28,7 @@ class _TartgetListState extends State<TargetList> {
   @override
   Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
+    ButtonData buttonData = Provider.of<ButtonData>(context);
     final ThemeData themeData = Theme.of(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;

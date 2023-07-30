@@ -65,6 +65,8 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
     _isAdding = false;
   }
 
+
+
   @override
   void initState() {
     super.initState();
@@ -83,7 +85,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               style: TextStyle(fontSize: 30),
             ),
             content: Text(
-              "影片時長須超過10秒",
+              "影片時長須超過5秒",
               style: TextStyle(fontSize: 20),
             ),
             actions: <Widget>[
@@ -100,10 +102,8 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
       _isLoading = true;
     });
 
-
     //await Future.delayed(Duration(seconds: 1)); // 假設計算需要 1 秒鐘
     processResultList(resultList);
-
 
     await Future.delayed(Duration(seconds: 5)); // 5秒的延遲
 
@@ -118,7 +118,6 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
       ),
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -236,7 +235,15 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: _isLoading
-                              ? CircularProgressIndicator()
+                              ? Center(
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    ],
+                                  ),
+                                )
                               : Container(),
                         ),
                       ),
@@ -256,6 +263,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                     _isTap = true;
                     control_num += 1;
                     await startVideoRecording(control_num);
+
                   },
                   child: Stack(
                     alignment: Alignment.center,
@@ -283,14 +291,13 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
               ],
             ),
             Visibility(
-              visible: number >= 10,
+              visible: number >= 5 && control_num % 2 == 0,
               child: Align(
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: InkWell(
                     onTap: () async {
-
                       number = 0;
 
                       startLoading();
@@ -298,8 +305,6 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                       targetListData.isCameraCompleted = true;
                       print(
                           'isCameraCompleted: ${targetListData.isCameraCompleted}');
-
-
                     },
                     child: Container(
                       alignment: Alignment.topRight,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kim_app/Tools/SlideLeftRoute.dart';
 import 'package:kim_app/Tools/widgetfunction.dart';
-import 'package:kim_app/buttons/girlbutton_1.dart';
-import 'package:kim_app/buttons/girlbutton_2.dart';
-import 'package:kim_app/buttons/girlbutton_3.dart';
-import 'package:kim_app/buttons/girlbutton_4.dart';
+import 'package:kim_app/buttons/Girl_Hold.dart';
+import 'package:kim_app/buttons/Girl_MoveState.dart';
+import 'package:kim_app/buttons/Girl_Transport.dart';
+import 'package:kim_app/buttons/Girl_Uplift.dart';
 import 'package:kim_app/screens/homescreen.dart';
 import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';

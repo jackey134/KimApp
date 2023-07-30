@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:kim_app/Tools/Data/ButtonData.dart';
 import 'package:kim_app/Tools/Kim/Kim_Constans.dart';
 import 'package:kim_app/Tools/SlideLeftRoute.dart';
 import 'package:kim_app/Tools/widgetfunction.dart';
-import 'package:kim_app/buttons/menbutton_1.dart';
+import 'package:kim_app/buttons/Men_Hold.dart';
 import 'package:kim_app/screens/homescreen.dart';
-import 'package:kim_app/buttons/menbutton_3.dart';
-import 'package:kim_app/buttons/menbutton_4.dart';
+import 'package:kim_app/buttons/Men_MoveState.dart';
+import 'package:kim_app/buttons/Men_Transport.dart';
 import 'package:kim_app/screens/step2_1_ChoiceGender_view.dart';
 import 'package:kim_app/screens/step3_result_view.dart';
 import 'package:provider/provider.dart';
 import '../Tools/Data/TargetListData.dart';
 import '../Tools/SlideRightRoute.dart';
 import '../Tools/constants.dart';
-import '../buttons/menbutton_2.dart';
+import '../buttons/Men_Uplift.dart';
 import 'TargetList.dart';
 
 enum ButtonType { Mybutton2, Mybutton3, Mybutton4 }
@@ -69,6 +70,7 @@ class _Step2_menchoicebutton_viewState
   @override
   Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
+    ButtonData buttonData = Provider.of<ButtonData>(context);
     final ThemeData themeData = Theme.of(context);
 
     return SafeArea(
@@ -178,6 +180,7 @@ class _Step2_menchoicebutton_viewState
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
+                                                buttonData.resetSelections();
                                                 targetListData.isLiftingLevelChoiceCompleted = false;
                                                 targetListData.isHoldingLevelChoiceCompleted = false;
                                                 targetListData.isCarryingLevelChoiceCompleted = false;
@@ -196,6 +199,7 @@ class _Step2_menchoicebutton_viewState
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
+                                                buttonData.resetSelections();
                                                 targetListData.isLiftingLevelChoiceCompleted = false;
                                                 targetListData.isHoldingLevelChoiceCompleted = false;
                                                 targetListData.isCarryingLevelChoiceCompleted = false;
@@ -214,6 +218,7 @@ class _Step2_menchoicebutton_viewState
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
+                                                buttonData.resetSelections();
                                                 targetListData.isLiftingLevelChoiceCompleted = false;
                                                 targetListData.isHoldingLevelChoiceCompleted = false;
                                                 targetListData.isCarryingLevelChoiceCompleted = false;
@@ -232,10 +237,13 @@ class _Step2_menchoicebutton_viewState
                                   IndexedStack(
                                       index: _selectedButtonValue,
                                       children: [
-                                        Mybutton2(),
-                                        Mybutton3(),
-                                        Mybutton4()
-                                      ]),
+                                        //value = 0
+                                        Mybutton2(myButton2selection: buttonData.myButton2Selection),
+                                        //value = 1
+                                        Mybutton3(myButton3selection: buttonData.myButton3Selection),
+                                        //value = 2
+                                        Mybutton4(myButton4selection: buttonData.myButton4Selection),
+                                      ],),
                                 ],
                               ),
                             ),
@@ -282,6 +290,8 @@ class _Step2_menchoicebutton_viewState
                       targetListData.isLiftingLevelChoiceCompleted = false;
                       targetListData.isHoldingLevelChoiceCompleted = false;
                       targetListData.isCarryingLevelChoiceCompleted = false;
+
+                      buttonData.resetSelections();
 
                       Navigator.push(
                         context,

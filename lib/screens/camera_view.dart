@@ -49,6 +49,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
   NNClassifier resultClassifier = NNClassifier();
   await Future.delayed(Duration(seconds: 1)); // 設定打開模型為1秒
   print(resultList.length);
+
   for (var i = 0; i < resultList.length; i++) {
     List flattenedList = resultList[i].expand((list) => list).toList();
     List doubleList = flattenedList.map((i) => i.toDouble()).toList();
@@ -57,6 +58,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
     Future result = _fromFutureToString(resultClassifier.classify(doubleList));
     label_result = await result;
   }
+
   for (var i = 0; i < resultList.length; i++) {
     List flattenedList = resultList[i].expand((list) => list).toList();
     List doubleList = flattenedList.map((i) => i.toDouble()).toList();

@@ -35,16 +35,33 @@ class IsolateUtils {
       if (isolateData != null) {
         Classifier classifier = Classifier(
             interpreter:
-            Interpreter.fromAddress(isolateData.interpreterAddress));
+                Interpreter.fromAddress(isolateData.interpreterAddress));
 
-        imageLib.Image image = ImageUtils.convertCameraImage(isolateData.cameraImage);
+        imageLib.Image image =
+            ImageUtils.convertCameraImage(isolateData.cameraImage);
 
         if (Platform.isAndroid) {
           image = imageLib.copyRotate(image, 90);
         }
 
         Future<List<dynamic>> results = classifier.runModel(image);
-        isolateData.responsePort.send(results);
+        
+        //2023/7/30改過這邊。遇到的問題是
+        //您正在嘗試將一個不可傳遞的物件（results）通過 Isolate 的 SendPort 來傳遞。
+        //在 Dart 中，當您嘗試通過 SendPort 傳遞物件時，這些物件必須是可序列化的，
+        //或者是 Dart 預設支持的原始數據類型，例如 int、double、String 等。
+        
+        // 假設 results 的類型是 Future<List<dynamic>>，請等待它完成
+        List<dynamic> resultsList = await results;
+
+        // 將結果轉換為可序列化的 List 格式
+        List<dynamic> serializableResults =
+            resultsList.map((result) => result).toList();
+
+        // 使用 SendPort 來傳遞可序列化的結果
+        isolateData.responsePort.send(serializableResults);
+
+        //isolateData.responsePort.send(results);
       }
     }
   }

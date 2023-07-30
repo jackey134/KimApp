@@ -277,7 +277,7 @@ class _Result_viewState extends State<Result_view> {
                                 // Navigator.push(context,
                                 //   SlideLeftRoute(widget: PDFApi()));
                                 final path =
-                                    'assets/report/KIMAPP_NewReport.pdf';
+                                    'assets/report/KIMAPP_NewReport01.pdf';
                                 final file = await PDFApi.loadAsset(path,targetListData.isMan);
                                 openPDF(context, file);
                               } else {
