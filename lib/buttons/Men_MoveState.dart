@@ -49,7 +49,7 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection1 = 1;
                 LoadLevel.manLoad = 1;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                debugPrint("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
                 targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
@@ -83,7 +83,7 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection1 = 2;
                 LoadLevel.manLoad = 2;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                debugPrint("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
                 targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
@@ -117,7 +117,7 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection1 = 3;
                 LoadLevel.manLoad = 3;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                debugPrint("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
                 targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
@@ -151,7 +151,7 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection1 = 4;
                 LoadLevel.manLoad = 4;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                debugPrint("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
                 targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
@@ -185,7 +185,7 @@ class _Mybutton extends State<Mybutton> {
               setState(() {
                 _selection1 = 5;
                 LoadLevel.manLoad = 5;
-                print("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
+                debugPrint("當前男性搬運物荷重級別為: ${LoadLevel.manLoadLeveling()}");
                 targetListData.isLoadLevelChoiceCompleted = true;
               });
             },
@@ -236,7 +236,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection2 = 1;
                 //WorkingCondition.levelGood();
                 WorkingCondition.workingScore = 1;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
                 targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
@@ -271,7 +271,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection2 = 2;
                 //WorkingCondition.levelNormal();
                 WorkingCondition.workingScore = 2;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
                 targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
@@ -306,7 +306,7 @@ class _Mybutton extends State<Mybutton> {
                 _selection2 = 3;
                 //WorkingCondition.levelBad();
                 WorkingCondition.workingScore = 3;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
                 targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },

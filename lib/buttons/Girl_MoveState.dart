@@ -35,9 +35,9 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
     return Container(
       child: Column(
         children: <Widget>[
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 "搬運物荷重",
                 style: TextStyle(fontSize: 20),
@@ -48,10 +48,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection1_Girl = 1;
-                LoadLevel.manLoad = 1;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
-                targetListData.isLoadLevelChoiceCompleted = true;
               });
+              LoadLevel.manLoad = 1;
+              debugPrint("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+              targetListData.isLoadLevelChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -82,10 +82,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection1_Girl = 2;
-                LoadLevel.manLoad = 2;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
-                targetListData.isLoadLevelChoiceCompleted = true;
               });
+              LoadLevel.manLoad = 2;
+              debugPrint("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+              targetListData.isLoadLevelChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -116,10 +116,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection1_Girl = 3;
-                LoadLevel.manLoad = 3;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
-                targetListData.isLoadLevelChoiceCompleted = true;
               });
+              LoadLevel.manLoad = 3;
+              debugPrint("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+              targetListData.isLoadLevelChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -150,10 +150,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection1_Girl = 4;
-                LoadLevel.manLoad = 4;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
-                targetListData.isLoadLevelChoiceCompleted = true;
               });
+              LoadLevel.manLoad = 4;
+              debugPrint("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+              targetListData.isLoadLevelChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -171,7 +171,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
                       onChanged: selectTime1,
                       value: 4,
                     ),
-                    Text(
+                    const Text(
                       "15 ~ 25 kg",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -184,10 +184,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection1_Girl = 5;
-                LoadLevel.manLoad = 5;
-                print("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
-                targetListData.isLoadLevelChoiceCompleted = true;
               });
+              LoadLevel.manLoad = 5;
+              debugPrint("當前女性搬運物荷重級別為: ${LoadLevel.girlLoadLeveling()}");
+              targetListData.isLoadLevelChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -216,15 +216,14 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
           ),
           Container(
               height: 35, // 高度
-              child:Divider(
+              child: const Divider(
                 thickness: 1, // 線的粗細
                 height: 10, // 線的高度
                 color: Colors.black, // 線的顏色
-              )
-          ),
-          Row(
+              )),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
                 "工作狀態評級",
                 style: TextStyle(fontSize: 20),
@@ -235,10 +234,10 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
             onTap: () {
               setState(() {
                 _selection2_Girl = 1;
-                WorkingCondition.workingScore = 1;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
-                targetListData.isWorkingConditionChoiceCompleted = true;
               });
+              WorkingCondition.workingScore = 1;
+              debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+              targetListData.isWorkingConditionChoiceCompleted = true;
             },
             child: Stack(
               alignment: Alignment.centerLeft,
@@ -270,7 +269,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection2_Girl = 2;
                 WorkingCondition.workingScore = 2;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
                 targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },
@@ -304,7 +303,7 @@ class _MybuttonGirl extends State<Mybutton_Girl> {
               setState(() {
                 _selection2_Girl = 3;
                 WorkingCondition.workingScore = 3;
-                print("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
+                debugPrint("當前工作狀況評級為: ${WorkingCondition.workLevel()}");
                 targetListData.isWorkingConditionChoiceCompleted = true;
               });
             },

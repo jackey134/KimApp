@@ -116,7 +116,7 @@ class _TartgetListState extends State<TargetList> {
                       context, SlideRightRoute(widget: step1_VideoPage()));
                 },
                 child: Padding(
-                  padding: EdgeInsets.only(left: 12, top: 8, right: 12),
+                  padding: const EdgeInsets.only(left: 12, top: 8, right: 12),
                   child: Container(
                     width: constraints.maxWidth,
                     height: constraints.maxHeight * 0.16,
@@ -130,43 +130,34 @@ class _TartgetListState extends State<TargetList> {
                         ),
                       ],
                     ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 10,
-                          left: 15,
-                          child: Text(
-                            "完成(${targetListData.isCameraCompleted ? "1" : "0"}/1)",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
+                    child: Stack(children: [
+                      Positioned(
+                        top: 10,
+                        left: 15,
+                        child: Text(
+                          "完成(${targetListData.isCameraCompleted ? "1" : "0"}/1)",
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.white),
                         ),
-                        Positioned(
+                      ),
+                      const Positioned(
                           bottom: 10,
                           left: 15,
-                          child: Text(
-                            "拍攝影片",
-                            style: TextStyle(fontSize: 35, color: Colors.white),
-                          ),
-                        ),
-                        Positioned(
+                          child: Text("拍攝影片",
+                              style: TextStyle(
+                                  fontSize: 35, color: Colors.white))),
+                      const Positioned(
                           top: 2,
                           right: 15,
-                          child: Text(
-                            "01",
-                            style: TextStyle(fontSize: 45, color: Colors.white),
-                          ),
-                        ),
-                        Positioned(
+                          child: Text("01",
+                              style: TextStyle(
+                                  fontSize: 45, color: Colors.white))),
+                      const Positioned(
                           bottom: 3,
                           right: 8,
-                          child: Icon(
-                            Icons.video_camera_front,
-                            size: 60,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
+                          child: Icon(Icons.video_camera_front,
+                              size: 60, color: Colors.white))
+                    ]),
                   ),
                 ),
               ),
@@ -201,7 +192,7 @@ class _TartgetListState extends State<TargetList> {
                             style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 10,
                           left: 15,
                           child: Text(
@@ -209,7 +200,7 @@ class _TartgetListState extends State<TargetList> {
                             style: TextStyle(fontSize: 35, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           top: 2,
                           right: 15,
                           child: Text(
@@ -217,7 +208,7 @@ class _TartgetListState extends State<TargetList> {
                             style: TextStyle(fontSize: 45, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 3,
                           right: 8,
                           child: Icon(
@@ -268,10 +259,11 @@ class _TartgetListState extends State<TargetList> {
                           left: 15,
                           child: Text(
                             "完成(${targetListData.isChoiceButtonCompleted ? "1" : "0"}/1)",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
+                            style: const TextStyle(
+                                fontSize: 20, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 10,
                           left: 15,
                           child: Text(
@@ -279,7 +271,7 @@ class _TartgetListState extends State<TargetList> {
                             style: TextStyle(fontSize: 35, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           top: 2,
                           right: 15,
                           child: Text(
@@ -287,7 +279,7 @@ class _TartgetListState extends State<TargetList> {
                             style: TextStyle(fontSize: 45, color: Colors.white),
                           ),
                         ),
-                        Positioned(
+                        const Positioned(
                           bottom: 3,
                           right: 8,
                           child: Icon(
@@ -302,9 +294,7 @@ class _TartgetListState extends State<TargetList> {
                 ),
               ),
               //間隔
-              SizedBox(
-                height: constraints.maxHeight * 0.1,
-              ),
+              SizedBox(height: constraints.maxHeight * 0.1),
               //進行檢測
               Visibility(
                 visible: targetListData.isChoiceButtonCompleted &&
@@ -312,13 +302,10 @@ class _TartgetListState extends State<TargetList> {
                     targetListData.isGenderCompleted,
                 child: InkWell(
                   onTap: () {
+                    RiskLevel.getScore(context);
                     Navigator.push(
                       context,
-                      SlideRightRoute(
-                        widget: Result_view(
-                          riskScore: RiskLevel.getScore(),
-                        ),
-                      ),
+                      SlideRightRoute(widget: Result_view()),
                     );
                   },
                   child: Container(
@@ -328,7 +315,7 @@ class _TartgetListState extends State<TargetList> {
                       borderRadius: BorderRadius.circular(20.0),
                       color: const Color(0xffF5F49B),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "KIM風險等級評估",
                         style: TextStyle(fontSize: 30),

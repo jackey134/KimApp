@@ -50,18 +50,18 @@ class _Step2_menchoicebutton_viewState
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
-              "注意",
+            title: const Text(
+              "提示",
               style: TextStyle(fontSize: 30),
             ),
-            content: Text(
-              "有選項未填!!",
+            content: const Text(
+              "有選項未填",
               style: TextStyle(fontSize: 20),
             ),
             actions: <Widget>[
               TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text("確定"))
+                  child: const Text("確定"))
             ],
           );
         });
@@ -91,7 +91,7 @@ class _Step2_menchoicebutton_viewState
                 child: Container(
                   padding: EdgeInsets.only(left: 8, top: 8),
                   color: colorPaleGray,
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_back,
                     size: 50,
                     color: Colors.white,
@@ -140,7 +140,7 @@ class _Step2_menchoicebutton_viewState
                         borderRadius: BorderRadius.circular(40),
                         color: Colors.white),
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         children: <Widget>[
                           Scrollbar(
@@ -149,17 +149,17 @@ class _Step2_menchoicebutton_viewState
                               child: ListView(
                                 scrollDirection: Axis.vertical,
                                 children: [
-                                  Mybutton(),
+                                  const Mybutton(),
                                   Container(
                                       height: 35, // 高度
-                                      child: Divider(
-                                        thickness: 1, // 線的粗細
-                                        height: 10, // 線的高度
-                                        color: Colors.black, // 線的顏色
-                                      )),
-                                  Row(
+                                      child: const Divider(
+                                          thickness: 1, // 線的粗細
+                                          height: 10, // 線的高度
+                                          color: Colors.black // 線的顏色
+                                          )),
+                                  const Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    children: const [
+                                    children: [
                                       Text(
                                         "當前工作時長(三選一)",
                                         style: TextStyle(fontSize: 20),
@@ -170,58 +170,73 @@ class _Step2_menchoicebutton_viewState
                                     children: [
                                       Expanded(
                                         child: RadioListTile(
-                                            contentPadding: EdgeInsets.all(0.0),
-                                            title: Text(
-                                              "(<5s)",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
+                                            contentPadding:
+                                                const EdgeInsets.all(0.0),
+                                            title: const Text("(<5s)",
+                                                style: TextStyle(fontSize: 15)),
                                             value: 0,
                                             groupValue: _selectedButtonValue,
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
                                                 buttonData.resetSelections();
-                                                targetListData.isLiftingLevelChoiceCompleted = false;
-                                                targetListData.isHoldingLevelChoiceCompleted = false;
-                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                                targetListData
+                                                        .isLiftingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isHoldingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isCarryingLevelChoiceCompleted =
+                                                    false;
                                               });
                                             }),
                                       ),
                                       Expanded(
                                         child: RadioListTile(
-                                            contentPadding: EdgeInsets.all(0.0),
-                                            title: Text(
-                                              "(>5s)",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
+                                            contentPadding:
+                                                const EdgeInsets.all(0.0),
+                                            title: const Text("(>5s)",
+                                                style: TextStyle(fontSize: 15)),
                                             value: 1,
                                             groupValue: _selectedButtonValue,
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
                                                 buttonData.resetSelections();
-                                                targetListData.isLiftingLevelChoiceCompleted = false;
-                                                targetListData.isHoldingLevelChoiceCompleted = false;
-                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                                targetListData
+                                                        .isLiftingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isHoldingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isCarryingLevelChoiceCompleted =
+                                                    false;
                                               });
                                             }),
                                       ),
                                       Expanded(
                                         child: RadioListTile(
-                                            contentPadding: EdgeInsets.all(0.0),
-                                            title: Text(
-                                              ">5m",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
+                                            contentPadding:
+                                                const EdgeInsets.all(0.0),
+                                            title: const Text(">5m",
+                                                style: TextStyle(fontSize: 15)),
                                             value: 2,
                                             groupValue: _selectedButtonValue,
                                             onChanged: (value) {
                                               setState(() {
                                                 _selectedButtonValue = value!;
                                                 buttonData.resetSelections();
-                                                targetListData.isLiftingLevelChoiceCompleted = false;
-                                                targetListData.isHoldingLevelChoiceCompleted = false;
-                                                targetListData.isCarryingLevelChoiceCompleted = false;
+                                                targetListData
+                                                        .isLiftingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isHoldingLevelChoiceCompleted =
+                                                    false;
+                                                targetListData
+                                                        .isCarryingLevelChoiceCompleted =
+                                                    false;
                                               });
                                             }),
                                       ),
@@ -229,21 +244,28 @@ class _Step2_menchoicebutton_viewState
                                   ),
                                   Container(
                                       height: 35, // 高度
-                                      child: Divider(
+                                      child: const Divider(
                                         thickness: 1, // 線的粗細
                                         height: 10, // 線的高度
                                         color: Colors.black, // 線的顏色
                                       )),
                                   IndexedStack(
-                                      index: _selectedButtonValue,
-                                      children: [
-                                        //value = 0
-                                        Mybutton2(myButton2selection: buttonData.myButton2Selection),
-                                        //value = 1
-                                        Mybutton3(myButton3selection: buttonData.myButton3Selection),
-                                        //value = 2
-                                        Mybutton4(myButton4selection: buttonData.myButton4Selection),
-                                      ],),
+                                    index: _selectedButtonValue,
+                                    children: [
+                                      //value = 0
+                                      Mybutton2(
+                                          myButton2selection:
+                                              buttonData.myButton2Selection),
+                                      //value = 1
+                                      Mybutton3(
+                                          myButton3selection:
+                                              buttonData.myButton3Selection),
+                                      //value = 2
+                                      Mybutton4(
+                                          myButton4selection:
+                                              buttonData.myButton4Selection),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -255,26 +277,24 @@ class _Step2_menchoicebutton_viewState
                 ]),
               ),
             ),
-            SizedBox(
-              height: constraints.maxHeight * 0.02,
-            ),
+            SizedBox(height: constraints.maxHeight * 0.02),
             Align(
               alignment: Alignment.topRight,
               child: Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () {
-                    print(
+                    debugPrint(
                         'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
-                    print(
+                    debugPrint(
                         'isLoadLevelChoiceCompleted:${targetListData.isLoadLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isWorkingConditionChoiceCompleted:${targetListData.isWorkingConditionChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isLiftingLevelChoiceCompleted:${targetListData.isLiftingLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isHoldingLevelChoiceCompleted:${targetListData.isHoldingLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isCarryingLevelChoiceCompleted:${targetListData.isCarryingLevelChoiceCompleted}');
 
                     if (targetListData.isLoadLevelChoiceCompleted &&
@@ -282,7 +302,6 @@ class _Step2_menchoicebutton_viewState
                         (targetListData.isLiftingLevelChoiceCompleted ||
                             targetListData.isHoldingLevelChoiceCompleted ||
                             targetListData.isCarryingLevelChoiceCompleted)) {
-
                       targetListData.isChoiceButtonCompleted = true;
 
                       targetListData.isLoadLevelChoiceCompleted = false;
@@ -308,14 +327,10 @@ class _Step2_menchoicebutton_viewState
                     width: constraints.maxWidth * 0.3,
                     height: constraints.maxHeight * 0.07,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: const Color(0xffF5F49B),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "完成",
-                        style: TextStyle(fontSize: 30),
-                      ),
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: const Color(0xffF5F49B)),
+                    child: const Center(
+                      child: Text("完成", style: TextStyle(fontSize: 30)),
                     ),
                   ),
                 ),

@@ -43,7 +43,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 1;
                 TimeLevel.liftingScore = 1;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(1);
               });
@@ -78,7 +78,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 2;
                 TimeLevel.liftingScore = 2;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(2);
               });
@@ -113,7 +113,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 3;
                 TimeLevel.liftingScore = 4;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(3);
               });
@@ -148,7 +148,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 4;
                 TimeLevel.liftingScore = 6;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(4);
               });
@@ -183,7 +183,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 5;
                 TimeLevel.liftingScore = 8;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(5);
               });
@@ -218,7 +218,7 @@ class _Mybutton2 extends State<Mybutton2> {
               setState(() {
                 widget.myButton2selection = 6;
                 TimeLevel.liftingScore = 10;
-                print("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
+                debugPrint("當前男性抬舉或置放作業級別為: ${TimeLevel.lifting()}");
                 targetListData.isLiftingLevelChoiceCompleted = true;
                 buttonData.setMyButton2Selection(6);
               });

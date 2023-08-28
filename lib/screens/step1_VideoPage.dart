@@ -126,8 +126,8 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
-    // print("width: $width}");
-    // print("height: $height");
+    // debugPrint("width: $width}");
+    // debugPrint("height: $height");
 
     Future<void> startVideoRecording(control_num) async {
       try {
@@ -145,7 +145,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
           });
         }
       } on CameraException catch (e) {
-        print('Error');
+        debugPrint('Error');
       }
     }
 
@@ -303,7 +303,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                       startLoading();
 
                       targetListData.isCameraCompleted = true;
-                      print(
+                      debugPrint(
                           'isCameraCompleted: ${targetListData.isCameraCompleted}');
                     },
                     child: Container(

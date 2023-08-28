@@ -16,8 +16,8 @@ import '../Tools/Kim/Kim_Constans.dart';
 import 'homescreen.dart';
 
 class Result_view extends StatefulWidget {
-  final int riskScore;
-  const Result_view({Key? key, required this.riskScore}) : super(key: key);
+  //final int riskScore;
+  const Result_view({Key? key}) : super(key: key);
 
   @override
   State<Result_view> createState() => _Result_viewState();
@@ -29,8 +29,9 @@ class _Result_viewState extends State<Result_view> {
 
   @override
   Widget build(BuildContext context) {
-    var targetListData = Provider.of<TargetListData>(context);
-    print("widget.riskScore: ${widget.riskScore}");
+    final targetListData = Provider.of<TargetListData>(context);
+    debugPrint("targetListData.riskScore: ${targetListData.riskScore}");
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: colorPaleGray,
@@ -66,13 +67,13 @@ class _Result_viewState extends State<Result_view> {
                               shape: BoxShape.circle,
                               border: Border.all(
                                 width: 15,
-                                color: widget.riskScore == 1
+                                color: targetListData.riskScore == 1
                                     ? Colors.green
-                                    : widget.riskScore == 2
+                                    : targetListData.riskScore == 2
                                         ? Colors.amberAccent
-                                        : widget.riskScore == 4
+                                        : targetListData.riskScore == 4
                                             ? Colors.orange
-                                            : widget.riskScore == 8
+                                            : targetListData.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -85,16 +86,16 @@ class _Result_viewState extends State<Result_view> {
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.02),
                             child: Text(
-                              "${widget.riskScore}",
+                              "${targetListData.riskScore}",
                               style: TextStyle(
                                 fontSize: constraints.maxHeight * 0.08,
-                                color: widget.riskScore == 1
+                                color: targetListData.riskScore == 1
                                     ? Colors.green
-                                    : widget.riskScore == 2
+                                    : targetListData.riskScore == 2
                                         ? Colors.amberAccent
-                                        : widget.riskScore == 4
+                                        : targetListData.riskScore == 4
                                             ? Colors.orange
-                                            : widget.riskScore == 8
+                                            : targetListData.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -107,33 +108,33 @@ class _Result_viewState extends State<Result_view> {
                             padding: EdgeInsets.only(
                                 top: constraints.maxHeight * 0.04),
                             child: Text(
-                              widget.riskScore == 1
+                              targetListData.riskScore == 1
                                   ? "低風險"
-                                  : widget.riskScore == 2
+                                  : targetListData.riskScore == 2
                                       ? "中等風險"
-                                      : widget.riskScore == 4
+                                      : targetListData.riskScore == 4
                                           ? "中高風險"
-                                          : widget.riskScore == 8
+                                          : targetListData.riskScore == 8
                                               ? "高風險"
                                               : "錯誤",
                               //textAlign: TextAlign.center, //constraints.maxHeight * 0.053
                               style: TextStyle(
-                                fontSize: widget.riskScore == 1
+                                fontSize: targetListData.riskScore == 1
                                     ? constraints.maxHeight * 0.053
-                                    : widget.riskScore == 2
+                                    : targetListData.riskScore == 2
                                         ? constraints.maxHeight * 0.043
-                                        : widget.riskScore == 4
+                                        : targetListData.riskScore == 4
                                             ? constraints.maxHeight * 0.043
-                                            : widget.riskScore == 8
+                                            : targetListData.riskScore == 8
                                                 ? constraints.maxHeight * 0.053
                                                 : 0,
-                                color: widget.riskScore == 1
+                                color: targetListData.riskScore == 1
                                     ? Colors.green
-                                    : widget.riskScore == 2
+                                    : targetListData.riskScore == 2
                                         ? Colors.amberAccent
-                                        : widget.riskScore == 4
+                                        : targetListData.riskScore == 4
                                             ? Colors.orange
-                                            : widget.riskScore == 8
+                                            : targetListData.riskScore == 8
                                                 ? Colors.red
                                                 : Colors.white,
                               ),
@@ -169,19 +170,19 @@ class _Result_viewState extends State<Result_view> {
                                 ),
                               ),
                               Center(
-                                child: widget.riskScore == 1 ? Text(
+                                child: targetListData.riskScore == 1 ? Text(
                                   "目前風險等級為第1級為低負荷狀態\n非常良好的姿態!請繼續維持下去。",
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.red),
-                                ) : widget.riskScore == 2 ? Text(
+                                ) : targetListData.riskScore == 2 ? Text(
                                   "目前風險等級為第2級為中等負載狀態\n姿態稍微不正確!需慢慢調整自我姿態。",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.red),
-                                ) : widget.riskScore == 4 ? Text(
+                                ) : targetListData.riskScore == 4 ? Text(
                                   "目前風險等級為第4級為中高負載狀態\n姿態不正確!需要定期檢查。",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.red),
-                                ) : widget.riskScore == 8 ? Text(
+                                ) : targetListData.riskScore == 8 ? Text(
                                   "目前風險等級為第8級為高負載狀態\n姿態嚴重不正確!需立刻進行改善。",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.red),
@@ -232,19 +233,19 @@ class _Result_viewState extends State<Result_view> {
                           child: Stack(
                             children: [
                               Center(
-                                child: widget.riskScore == 1 ? Text(
+                                child: targetListData.riskScore == 1 ? Text(
                                   "此種風險等級不易產生生理做載的情形發生\n為最理想標準的姿態。",
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
-                                ) : widget.riskScore == 2 ? Text(
+                                ) : targetListData.riskScore == 2 ? Text(
                                   "此種風險等級需進一步調查及必要時進行改善\n針對此類族群應進行工作再設計。",
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
-                                ) : widget.riskScore == 4 ? Text(
+                                ) : targetListData.riskScore == 4 ? Text(
                                   "此種風險等級需近日內進行進一步調查及改善\n針對此類族群建議進行工作改善。",
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
-                                ) : widget.riskScore == 8 ? Text(
+                                ) : targetListData.riskScore == 8 ? Text(
                                   "此種風險等級必須立即進行調查及改善\n針對此類族群必須進行工作改善。",
                                   style: TextStyle(
                                       fontSize: 16, color: Colors.white),
@@ -390,6 +391,6 @@ class _Result_viewState extends State<Result_view> {
 //       Permission.storage,
 //       Permission.manageExternalStorage,
 //     ].request();
-//     print(statuses[Permission.storage]);
+//     debugPrint(statuses[Permission.storage]);
 //   }
 }

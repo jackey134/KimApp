@@ -48,12 +48,12 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
 
   NNClassifier resultClassifier = NNClassifier();
   await Future.delayed(Duration(seconds: 1)); // 設定打開模型為1秒
-  print(resultList.length);
+  debugPrint("${resultList.length}");
 
   for (var i = 0; i < resultList.length; i++) {
     List flattenedList = resultList[i].expand((list) => list).toList();
     List doubleList = flattenedList.map((i) => i.toDouble()).toList();
-    // print(doubleList); // [1, 2, 3, 4, 5, 6, ..., 51]
+    // debugPrint(doubleList); // [1, 2, 3, 4, 5, 6, ..., 51]
 
     Future result = _fromFutureToString(resultClassifier.classify(doubleList));
     label_result = await result;
@@ -69,7 +69,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
     label_result_list.add(
         label_result); // 將 label_result 添加到 label_result_list 中
   }
-  print(label_result_list);
+  debugPrint("$label_result_list");
   for (int i = 0; i < label_result_list.length; i ++) {
     if (i + 10 > label_result_list.length) {
       break;
@@ -90,7 +90,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
         label_final_result_list.add(label);
       }
     });
-    print('第${i}个切片中出现最多的元素是 $mostFrequent，共出現了 $maxCount 次');
+    debugPrint('第${i}个切片中出现最多的元素是 $mostFrequent，共出現了 $maxCount 次');
   }
   if(label_final_result_list.contains('label20')){
     label_final_result = 'label20';
@@ -101,7 +101,7 @@ Future<void> processResultList(List<List<dynamic>> resultList) async {
   }else{
     label_final_result = 'label0';
   }
-  print(label_final_result); //輸出最終評級
+  debugPrint(label_final_result); //輸出最終評級
 }
 
 String getFinalResult(){
@@ -157,8 +157,8 @@ class _CameraViewState extends State<CameraView> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    super.initState();
     initStateAsync();
+    super.initState();
   }
 
   @override
@@ -345,7 +345,7 @@ class RenderLandmarks extends CustomPainter {
 
     if(button){
       resultList.add(result);
-      // print(result);
+      // debugPrint(result);
     }
 
     inferenceList = result;

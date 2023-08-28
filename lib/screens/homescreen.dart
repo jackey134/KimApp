@@ -3,7 +3,6 @@ import 'package:kim_app/Tools/Data/TargetListData.dart';
 import 'package:kim_app/Tools/SlideRightRoute.dart';
 import 'package:kim_app/screens/teachScreen.dart';
 import 'package:provider/provider.dart';
-import '../Tools/Data/ButtonData.dart';
 import '../Tools/constants.dart';
 import '../Tools/folders/create_folder.dart';
 
@@ -18,8 +17,14 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    // TODO: implement initState
     requestPermission();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
     //final size = MediaQuery.of(context).size;
     //final width = size.width;
@@ -94,12 +99,12 @@ class _HomescreenState extends State<Homescreen> {
 
               InkWell(
                 onTap: () {
-                  print(
+                  debugPrint(
                       'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
-                  print('isMan: ${targetListData.isMan}');
-                  print(
+                  debugPrint('isMan: ${targetListData.isMan}');
+                  debugPrint(
                       'isCameraCompleted: ${targetListData.isCameraCompleted}');
-                  print(
+                  debugPrint(
                       'isGenderCompleted: ${targetListData.isGenderCompleted}');
 
                   Navigator.push(

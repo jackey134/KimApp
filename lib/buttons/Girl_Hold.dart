@@ -42,7 +42,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 1;
                 TimeLevel.holdingTimeScore = 1;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
@@ -76,7 +76,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 2;
                 TimeLevel.holdingTimeScore = 2;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
@@ -110,7 +110,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 3;
                 TimeLevel.holdingTimeScore = 4;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
@@ -144,7 +144,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 4;
                 TimeLevel.holdingTimeScore = 6;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
@@ -178,7 +178,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 5;
                 TimeLevel.holdingTimeScore = 8;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },
@@ -212,7 +212,7 @@ class _Mybutton3_Girl extends State<Mybutton3_Girl> {
               setState(() {
                 _selection4_Girl = 6;
                 TimeLevel.holdingTimeScore = 10;
-                print("當前女性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前女性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
               });
             },

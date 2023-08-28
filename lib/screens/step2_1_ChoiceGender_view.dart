@@ -40,9 +40,7 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Navigator.pop(
-                          context,
-                          SlideLeftRoute(
-                              widget: const TargetList()));
+                          context, SlideLeftRoute(widget: const TargetList()));
                     },
                     child: Container(
                       padding: const EdgeInsets.only(left: 8, top: 8),
@@ -89,7 +87,9 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                       onTap: () {
                         targetListData.isMan = true;
                         targetListData.isGenderCompleted = true;
-                        print('isGenderCompleted: ${targetListData.isGenderCompleted}');
+                        targetListData.isChoiceButtonCompleted = false;
+                        debugPrint(
+                            'isGenderCompleted: ${targetListData.isGenderCompleted}');
                         Navigator.push(
                           context,
                           SlideRightRoute(
@@ -108,11 +108,9 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                                 fit: BoxFit.contain, //填滿sizeBox的指令
                               ),
                             ),
-                            Text(
-                              "男性",
-                              style:
-                                  TextStyle(fontSize: 40, color: Colors.white),
-                            ),
+                            const Text("男性",
+                                style: TextStyle(
+                                    fontSize: 40, color: Colors.white)),
                           ],
                         ),
                       ),
@@ -124,7 +122,9 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                       onTap: () {
                         targetListData.isMan = false;
                         targetListData.isGenderCompleted = true;
-                        print('isGenderCompleted: ${targetListData.isGenderCompleted}');
+                        targetListData.isChoiceButtonCompleted = false;
+                        debugPrint(
+                            'isGenderCompleted: ${targetListData.isGenderCompleted}');
                         Navigator.push(
                           context,
                           SlideRightRoute(
@@ -143,11 +143,9 @@ class _Step2_choicegender_viewState extends State<Step2_choicegender_view> {
                                 fit: BoxFit.contain, //填滿sizeBox的指令
                               ),
                             ),
-                            Text(
-                              "女性",
-                              style:
-                                  TextStyle(fontSize: 40, color: Colors.white),
-                            ),
+                            const Text("女性",
+                                style: TextStyle(
+                                    fontSize: 40, color: Colors.white)),
                           ],
                         ),
                       ),

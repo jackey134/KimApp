@@ -15,6 +15,10 @@ class TargetListData extends ChangeNotifier {
 
   int _count = 0;
 
+  int? _riskScore;
+
+  int? get riskScore => _riskScore;
+
 
   bool get isMan => _isMan;
   bool get isCameraCompleted => _isCameraCompleted;
@@ -29,6 +33,11 @@ class TargetListData extends ChangeNotifier {
 
 
   int get count => _count;
+
+  set riskScore(int? value){
+    _riskScore = value;
+    notifyListeners();
+  }
 
   set isMan(bool value) {
     _isMan = value;

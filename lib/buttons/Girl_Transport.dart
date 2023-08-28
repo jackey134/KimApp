@@ -42,7 +42,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 1;
                 TimeLevel.carryingDistanceScore = 1;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },
@@ -76,7 +76,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 2;
                 TimeLevel.carryingDistanceScore = 2;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },
@@ -110,7 +110,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 3;
                 TimeLevel.carryingDistanceScore = 4;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },
@@ -144,7 +144,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 4;
                 TimeLevel.carryingDistanceScore = 6;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },
@@ -178,7 +178,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 5;
                 TimeLevel.carryingDistanceScore = 8;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },
@@ -212,7 +212,7 @@ class _Mybutton4_Girl extends State<Mybutton4_Girl> {
               setState(() {
                 _selection5_Girl = 6;
                 TimeLevel.carryingDistanceScore = 10;
-                print("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前女性輸送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
               });
             },

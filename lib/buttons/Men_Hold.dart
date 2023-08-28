@@ -9,16 +9,13 @@ import '../Tools/Data/TargetListData.dart';
 
 class Mybutton3 extends StatefulWidget {
   int? myButton3selection;
-  Mybutton3({Key? key,required this.myButton3selection}) : super(key: key);
+  Mybutton3({Key? key, required this.myButton3selection}) : super(key: key);
 
   @override
   State<Mybutton3> createState() => _Mybutton3();
 }
 
-
 class _Mybutton3 extends State<Mybutton3> {
-
-
   selectTime4(int? timeSelected) {
     setState(() {
       widget.myButton3selection = timeSelected!;
@@ -28,25 +25,19 @@ class _Mybutton3 extends State<Mybutton3> {
   @override
   Widget build(BuildContext context) {
     TargetListData targetListData = Provider.of<TargetListData>(context);
-    ButtonData buttonData = Provider.of<ButtonData>(context,listen: true);
+    ButtonData buttonData = Provider.of<ButtonData>(context, listen: true);
     return Container(
       child: Column(
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text(
-                "握持作業",
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
-          ),
+          const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+            Text("握持作業", style: TextStyle(fontSize: 20)),
+          ]),
           InkWell(
             onTap: () {
               setState(() {
                 widget.myButton3selection = 1;
                 TimeLevel.holdingTimeScore = 1;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(1);
               });
@@ -57,7 +48,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 100,
-                  color: widget.myButton3selection == 1 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 1
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
@@ -81,7 +74,7 @@ class _Mybutton3 extends State<Mybutton3> {
               setState(() {
                 widget.myButton3selection = 2;
                 TimeLevel.holdingTimeScore = 2;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(2);
               });
@@ -92,7 +85,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 120,
-                  color: widget.myButton3selection == 2 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 2
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
@@ -116,7 +111,7 @@ class _Mybutton3 extends State<Mybutton3> {
               setState(() {
                 widget.myButton3selection = 3;
                 TimeLevel.holdingTimeScore = 4;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(3);
               });
@@ -127,7 +122,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 140,
-                  color: widget.myButton3selection == 3 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 3
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
@@ -151,7 +148,7 @@ class _Mybutton3 extends State<Mybutton3> {
               setState(() {
                 widget.myButton3selection = 4;
                 TimeLevel.holdingTimeScore = 6;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(4);
               });
@@ -162,7 +159,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 110,
-                  color: widget.myButton3selection == 4 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 4
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
@@ -186,7 +185,7 @@ class _Mybutton3 extends State<Mybutton3> {
               setState(() {
                 widget.myButton3selection = 5;
                 TimeLevel.holdingTimeScore = 8;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(5);
               });
@@ -197,7 +196,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 110,
-                  color: widget.myButton3selection == 5 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 5
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[
@@ -221,7 +222,7 @@ class _Mybutton3 extends State<Mybutton3> {
               setState(() {
                 widget.myButton3selection = 6;
                 TimeLevel.holdingTimeScore = 10;
-                print("當前男性握持作業級別為: ${TimeLevel.holding()}");
+                debugPrint("當前男性握持作業級別為: ${TimeLevel.holding()}");
                 targetListData.isHoldingLevelChoiceCompleted = true;
                 buttonData.setMyButton3Selection(6);
               });
@@ -232,7 +233,9 @@ class _Mybutton3 extends State<Mybutton3> {
                 Container(
                   height: 40,
                   width: 110,
-                  color: widget.myButton3selection == 6 ? Colors.green : Colors.white,
+                  color: widget.myButton3selection == 6
+                      ? Colors.green
+                      : Colors.white,
                 ),
                 Row(
                   children: <Widget>[

@@ -45,7 +45,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 1;
                 TimeLevel.carryingDistanceScore = 1;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(1);
               });
@@ -80,7 +80,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 2;
                 TimeLevel.carryingDistanceScore = 2;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(2);
               });
@@ -115,7 +115,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 3;
                 TimeLevel.carryingDistanceScore = 4;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(3);
               });
@@ -150,7 +150,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 4;
                 TimeLevel.carryingDistanceScore = 6;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(4);
               });
@@ -185,7 +185,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 5;
                 TimeLevel.carryingDistanceScore = 8;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(5);
               });
@@ -220,7 +220,7 @@ class _Mybutton4 extends State<Mybutton4> {
               setState(() {
                 widget.myButton4selection = 6;
                 TimeLevel.carryingDistanceScore = 10;
-                print("當前男性運送作業級別為: ${TimeLevel.carrying()}");
+                debugPrint("當前男性運送作業級別為: ${TimeLevel.carrying()}");
                 targetListData.isCarryingLevelChoiceCompleted = true;
                 buttonData.setMyButton4Selection(6);
               });

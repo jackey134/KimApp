@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:external_path/external_path.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,7 @@ class PDFApi {
 
     // 從本地文件系統中讀取 PDF 文件
     PdfDocument document = PdfDocument(inputBytes: bytes);
-    print(document);
+    debugPrint("$document");
 
     // 從 PDF 文檔中讀取頁面
     final page = document.pages[0];

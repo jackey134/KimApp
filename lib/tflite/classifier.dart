@@ -70,7 +70,7 @@ class Classifier {
         _outputShapes.add(tensor.shape);
       });
     } catch (e) {
-      print("Error while creating interpreter: $e");
+      debugPrint("Error while creating interpreter: $e");
     }
     // outputLocations = TensorBufferFloat([1, 1, 17, 3]);
   }

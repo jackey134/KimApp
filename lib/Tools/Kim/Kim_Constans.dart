@@ -1,4 +1,9 @@
 //風險值
+import 'package:flutter/material.dart';
+import 'package:kim_app/Tools/Data/TargetListData.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
+
 import '../../screens/camera_view.dart';
 
 class RiskLevel {
@@ -9,8 +14,13 @@ class RiskLevel {
             WorkingCondition.workingConditionLevel);
   }
 
-  static getScore() {
-    return RiskLevelScore.scoreNumber();
+  static getScore(BuildContext context) {
+    final totalScoreProvider =
+        Provider.of<TargetListData>(context, listen: false);
+    totalScoreProvider.riskScore = RiskLevelScore.scoreNumber();
+
+    debugPrint("總積分: ${totalScoreProvider.riskScore}");
+    return totalScoreProvider.riskScore;
   }
 }
 
@@ -28,8 +38,9 @@ class RiskLevelScore {
     } else if (total >= 50) {
       score = 8;
     }
-    print(
-        "${total} = ${TimeLevel.timeLevel} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
+
+    debugPrint(
+        "$total = ${TimeLevel.timeLevel} * (${LoadLevel.loadLevel} + ${PoseLevel.poseLevel} + ${WorkingCondition.workingConditionLevel})");
 
     return score;
   }
@@ -191,7 +202,7 @@ class PoseLevel {
   static int poseLevel = getPoseLevel();
 
   static getPoseLevel() {
-    print("姿態評級得分: " + poseResult);
+    debugPrint("姿態評級得分: " + poseResult);
     int poseScore = 0;
     if (poseResult == "label0") {
       poseScore = 1;

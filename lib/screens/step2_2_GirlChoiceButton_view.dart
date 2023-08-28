@@ -41,8 +41,8 @@ class _Step2_girlchoicebutton_viewState
       _selection2 = timeSelected!;
     });
   }
-  int _selectedButtonValue = 0;
 
+  int _selectedButtonValue = 0;
 
   Future<void> showAlertDialog() async {
     return showDialog<void>(
@@ -65,8 +65,6 @@ class _Step2_girlchoicebutton_viewState
           );
         });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -123,9 +121,7 @@ class _Step2_girlchoicebutton_viewState
                 ),
               ),
             ),
-            SizedBox(
-              height: constraints.maxHeight * 0.02,
-            ),
+            SizedBox(height: constraints.maxHeight * 0.02),
             Align(
               alignment: Alignment.center,
               child: Container(
@@ -153,15 +149,15 @@ class _Step2_girlchoicebutton_viewState
                                           Mybutton_Girl(),
                                           Container(
                                               height: 35, // 高度
-                                              child: Divider(
+                                              child: const Divider(
                                                 thickness: 1, // 線的粗細
                                                 height: 10, // 線的高度
                                                 color: Colors.black, // 線的顏色
                                               )),
-                                          Row(
+                                          const Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                            children: const [
+                                                MainAxisAlignment.start,
+                                            children: [
                                               Text(
                                                 "當前工作時長(三選一)",
                                                 style: TextStyle(fontSize: 20),
@@ -173,57 +169,57 @@ class _Step2_girlchoicebutton_viewState
                                               Expanded(
                                                 child: RadioListTile(
                                                     contentPadding:
-                                                    EdgeInsets.all(0.0),
+                                                        EdgeInsets.all(0.0),
                                                     title: Text(
                                                       "(<5s)",
-                                                      style:
-                                                      TextStyle(fontSize: 15),
+                                                      style: TextStyle(
+                                                          fontSize: 15),
                                                     ),
                                                     value: 0,
                                                     groupValue:
-                                                    _selectedButtonValue,
+                                                        _selectedButtonValue,
                                                     onChanged: (value) {
                                                       setState(() {
                                                         _selectedButtonValue =
-                                                        value!;
+                                                            value!;
                                                       });
                                                     }),
                                               ),
                                               Expanded(
                                                 child: RadioListTile(
                                                     contentPadding:
-                                                    EdgeInsets.all(0.0),
+                                                        EdgeInsets.all(0.0),
                                                     title: Text(
                                                       "(>5s)",
-                                                      style:
-                                                      TextStyle(fontSize: 15),
+                                                      style: TextStyle(
+                                                          fontSize: 15),
                                                     ),
                                                     value: 1,
                                                     groupValue:
-                                                    _selectedButtonValue,
+                                                        _selectedButtonValue,
                                                     onChanged: (value) {
                                                       setState(() {
                                                         _selectedButtonValue =
-                                                        value!;
+                                                            value!;
                                                       });
                                                     }),
                                               ),
                                               Expanded(
                                                 child: RadioListTile(
                                                     contentPadding:
-                                                    EdgeInsets.all(0.0),
+                                                        EdgeInsets.all(0.0),
                                                     title: Text(
                                                       ">5m",
-                                                      style:
-                                                      TextStyle(fontSize: 15),
+                                                      style: TextStyle(
+                                                          fontSize: 15),
                                                     ),
                                                     value: 2,
                                                     groupValue:
-                                                    _selectedButtonValue,
+                                                        _selectedButtonValue,
                                                     onChanged: (value) {
                                                       setState(() {
                                                         _selectedButtonValue =
-                                                        value!;
+                                                            value!;
                                                       });
                                                     }),
                                               ),
@@ -263,25 +259,24 @@ class _Step2_girlchoicebutton_viewState
                 padding: const EdgeInsets.only(right: 10),
                 child: InkWell(
                   onTap: () {
-                    print(
+                    debugPrint(
                         'isChoiceButtonCompleted:${targetListData.isChoiceButtonCompleted}');
-                    print(
+                    debugPrint(
                         'isLoadLevelChoiceCompleted:${targetListData.isLoadLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isWorkingConditionChoiceCompleted:${targetListData.isWorkingConditionChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isLiftingLevelChoiceCompleted:${targetListData.isLiftingLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isHoldingLevelChoiceCompleted:${targetListData.isHoldingLevelChoiceCompleted}');
-                    print(
+                    debugPrint(
                         'isCarryingLevelChoiceCompleted:${targetListData.isCarryingLevelChoiceCompleted}');
 
                     if (targetListData.isLoadLevelChoiceCompleted &&
-                        targetListData.isWorkingConditionChoiceCompleted &&
-                        targetListData.isLiftingLevelChoiceCompleted ||
+                            targetListData.isWorkingConditionChoiceCompleted &&
+                            targetListData.isLiftingLevelChoiceCompleted ||
                         targetListData.isHoldingLevelChoiceCompleted ||
-                        targetListData.isCarryingLevelChoiceCompleted
-                    ) {
+                        targetListData.isCarryingLevelChoiceCompleted) {
                       targetListData.isChoiceButtonCompleted = true;
 
                       targetListData.isLoadLevelChoiceCompleted = false;
@@ -296,7 +291,7 @@ class _Step2_girlchoicebutton_viewState
                           widget: TargetList(),
                         ),
                       );
-                    }else{
+                    } else {
                       showAlertDialog();
                     }
                   },

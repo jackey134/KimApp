@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:ui';
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:tflite_flutter/tflite_flutter.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 
@@ -39,7 +40,7 @@ class NNClassifier {
       _inputType = _interpreter2.getInputTensor(0).type; //TfLiteType.float32
       _outputType = _interpreter2.getOutputTensor(0).type; //TfLiteType.float32
     } catch (e) {
-      print("Error while creating interpreter: $e");
+      debugPrint("Error while creating interpreter: $e");
     }
   }
 
