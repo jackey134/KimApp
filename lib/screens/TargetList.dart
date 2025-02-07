@@ -88,7 +88,7 @@ class _TartgetListState extends State<TargetList> {
                 padding: const EdgeInsets.only(left: 12),
                 child: Container(
                   width: constraints.maxWidth,
-                  height: constraints.maxHeight * 0.11,
+                  height: constraints.maxHeight * 0.12,
                   child: const Column(
                     children: <Widget>[
                       Align(
@@ -116,7 +116,7 @@ class _TartgetListState extends State<TargetList> {
                       context, SlideRightRoute(widget: step1_VideoPage()));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 12, top: 8, right: 12),
+                  padding: const EdgeInsets.only(left: 12, top: 10, right: 12),
                   child: Container(
                     width: constraints.maxWidth,
                     height: constraints.maxHeight * 0.16,

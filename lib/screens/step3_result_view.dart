@@ -280,7 +280,9 @@ class _Result_viewState extends State<Result_view> {
                                 final path =
                                     'assets/report/KIMAPP_NewReport01.pdf';
                                 final file = await PDFApi.loadAsset(path,targetListData.isMan);
+
                                 openPDF(context, file);
+                                
                               } else {
                                 // 權限未被授予
                                 Center(

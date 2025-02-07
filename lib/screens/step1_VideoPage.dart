@@ -182,7 +182,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                 children: [
                   Container(
                     width: constraints.maxWidth,
-                    height: constraints.maxHeight * 0.11,
+                    height: constraints.maxHeight * 0.12,
                     child: const Column(
                       children: <Widget>[
                         Align(
@@ -309,7 +309,7 @@ class _step1_VideoPageState extends State<step1_VideoPage> {
                     child: Container(
                       alignment: Alignment.topRight,
                       width: constraints.maxWidth * 0.3,
-                      height: constraints.maxHeight * 0.07,
+                      height: constraints.maxHeight * 0.06,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         color: const Color(0xffF5F49B),

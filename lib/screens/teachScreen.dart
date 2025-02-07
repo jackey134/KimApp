@@ -80,7 +80,7 @@ class _TeachScreenState extends State<TeachScreen> {
                     child: Stack(children: [
                       Container(
                         width: 370,
-                        height: 500,
+                        height: 450,
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.white),
                             borderRadius: BorderRadius.circular(40),
@@ -93,7 +93,7 @@ class _TeachScreenState extends State<TeachScreen> {
                                 children: <Widget>[
                                   Scrollbar(
                                       child: Container(
-                                          height: 450,
+                                          height: 400,
                                           child: ListView(
                                               scrollDirection: Axis.vertical,
                                               children: [

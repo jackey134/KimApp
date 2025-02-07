@@ -103,7 +103,7 @@ class _Step2_menchoicebutton_viewState
               padding: const EdgeInsets.only(left: 12),
               child: Container(
                 width: constraints.maxWidth,
-                height: constraints.maxHeight * 0.11,
+                height: constraints.maxHeight * 0.12,
                 child: const Column(
                   children: <Widget>[
                     Align(
@@ -134,7 +134,7 @@ class _Step2_menchoicebutton_viewState
                 child: Stack(children: [
                   Container(
                     width: 370,
-                    height: 500,
+                    height: 450,
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(40),
@@ -145,7 +145,7 @@ class _Step2_menchoicebutton_viewState
                         children: <Widget>[
                           Scrollbar(
                             child: Container(
-                              height: 450,
+                              height: 400,
                               child: ListView(
                                 scrollDirection: Axis.vertical,
                                 children: [

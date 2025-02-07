@@ -100,7 +100,7 @@ class _Step2_girlchoicebutton_viewState
               padding: const EdgeInsets.only(left: 12),
               child: Container(
                 width: constraints.maxWidth,
-                height: constraints.maxHeight * 0.11,
+                height: constraints.maxHeight * 0.12,
                 child: const Column(
                   children: <Widget>[
                     Align(
