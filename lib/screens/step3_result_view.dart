@@ -271,8 +271,8 @@ class _Result_viewState extends State<Result_view> {
                         children: [
                           InkWell(
                             onTap: () async {
-                              var status = await Permission.storage.request();
-                              if (status.isGranted) {
+                              //var status = await Permission.storage.request();
+                              //if (status.isGranted) {
                                 // 權限已授予 //這邊記得要改寫假如權限有跑過要職接近下一個
                                 await createPDFNewDir();
                                 // Navigator.push(context,
@@ -283,12 +283,12 @@ class _Result_viewState extends State<Result_view> {
 
                                 openPDF(context, file);
                                 
-                              } else {
-                                // 權限未被授予
-                                Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              }
+                              // } else {
+                              //   // 權限未被授予
+                              //   Center(
+                              //     child: CircularProgressIndicator(),
+                              //   );
+                              // }
                             },
                             child: Stack(
                               children: [

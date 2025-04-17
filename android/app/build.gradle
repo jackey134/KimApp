@@ -37,6 +37,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
 android {
+    namespace 'com.example.kim_app'
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
